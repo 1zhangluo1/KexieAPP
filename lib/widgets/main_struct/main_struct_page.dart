@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:kexie_app/routes/route.dart';
-import 'package:kexie_app/ui/class_schedule_page.dart';
-import 'package:kexie_app/ui/forumpage.dart';
-import 'package:kexie_app/ui/homepage.dart';
-import 'package:kexie_app/ui/login.dart';
+import 'package:kexie_app/ui/forum/forumpage.dart';
 import 'package:kexie_app/ui/profile/profile_page.dart';
+import 'package:kexie_app/ui/sign_system/sign_page.dart';
 import 'package:kexie_app/widgets/contain_image_button.dart';
 import 'package:kexie_app/widgets/main_struct/main_struct_controller.dart';
 
@@ -53,7 +50,7 @@ class _MainStructState extends State<MainStruct> {
               controller: _controller,
               children: const [
                 HomePages(),
-                ClassSchedule(),
+                SignPage(),
                 Forum(),
                 Profile(),
               ],
@@ -88,7 +85,7 @@ class _MainStructState extends State<MainStruct> {
       floatingActionButton: Obx(
         () => FloatingActionButton(
           shape: const CircleBorder(),
-          backgroundColor: Colors.blue[300],
+          backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.7),
           child: AnimatedRotation(
               turns: angle.value / 360,
               duration: const Duration(milliseconds: 300),
@@ -106,12 +103,12 @@ class _MainStructState extends State<MainStruct> {
               bottomToolbarHeight.value = MediaQuery.of(context).size.height / 3.6;
               bottomBarFunctions.clear();
               bottomBarFunctions.addAll([
-                ContainImageButton(background: Colors.orange, icon: Icons.event_available, label: '签到',event: () => Get.toNamed(AppRoute.sign),),
-                ContainImageButton(background: Colors.deepPurpleAccent, icon: Icons.equalizer, label: '打卡统计', event: () => Get.toNamed(AppRoute.signRecord),),
-                ContainImageButton(background: Colors.pinkAccent, icon: Icons.add_reaction, label: '科协招新'),
-                ContainImageButton(background: Colors.blueGrey, icon: Icons.token, label: '科协黑科技'),
+                ContainImageButton(background: Colors.orange, icon: Icons.book, label: '图书借阅',event: () => Get.toNamed(AppRoute.bookBorrow),),
+                ContainImageButton(background: Colors.deepPurpleAccent, icon: Icons.equalizer, label: '打卡统计', event: () => Get.toNamed(AppRoute.signRank),),
+                ContainImageButton(background: Colors.pinkAccent, icon: Icons.add_reaction, label: '科协招新', event: () => Get.toNamed(AppRoute.signUp),),
+                ContainImageButton(background: Colors.blueGrey, icon: Icons.token, label: '优秀作品', event: () => c.toKeixeGithub(),),
                 ContainImageButton(background: Colors.greenAccent, icon: Icons.web, label: '科协官网',event: () => c.toKexieWeb(),),
-                ContainImageButton(background: Colors.yellow, icon: Icons.store, label: '科协git'),
+                ContainImageButton(background: Colors.yellow, icon: Icons.store, label: '科协git',event: () => c.toKexieGit(),),
                 ContainImageButton(background: Colors.blueAccent, icon: Icons.cloud_download, label: '科协网盘', event: () => c.tokexieNetdisk(),),
                 ContainImageButton(background: Colors.redAccent, icon: Icons.login, label: '登录',event: () => Get.toNamed(AppRoute.loginPage),),
               ]
@@ -131,8 +128,8 @@ class _MainStructState extends State<MainStruct> {
       shape: const CircularNotchedRectangle(),
       notchMargin: 10.0,
       shadowColor: Colors.black,
-      color: Colors.white,
-      surfaceTintColor: Colors.white,
+      color: Theme.of(context).colorScheme.surface,
+      surfaceTintColor: Theme.of(context).colorScheme.surface,
       elevation: 5,
       height: 60,
       padding: const EdgeInsets.only(top: 10),
@@ -145,7 +142,7 @@ class _MainStructState extends State<MainStruct> {
             Icons.school,
             "首页",
           ),
-          bottomItem(1, Icons.table_view, "课表"),
+          bottomItem(1, Icons.event_available, "签到"),
           const SizedBox(
             width: 40,
           ),
@@ -175,7 +172,7 @@ class _MainStructState extends State<MainStruct> {
           children: [
             Icon(
               icon,
-              color: pageId == index ? Colors.cyan : color,
+              color: pageId == index ? Theme.of(context).colorScheme.primary.withOpacity(0.7) : color,
             ),
             Text(title),
           ],

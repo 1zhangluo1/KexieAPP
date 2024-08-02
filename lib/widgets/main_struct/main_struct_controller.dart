@@ -9,4 +9,12 @@ class MainStructController extends GetxController {
     launchUrl(Uri.parse('https://pan.kexie.space/s/ZQLNbqMGEn3XKeH'));
   }
 
+  void toKexieGit() {
+    launchUrl(Uri.parse('https://git.kexie.space/users/sign_in'));
+  }
+
+  void toKeixeGithub() {
+    launchUrl(Uri.parse('https://github.com/sanyuankexie'));
+  }
+
 }
