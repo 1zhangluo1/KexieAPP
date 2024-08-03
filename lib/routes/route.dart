@@ -27,7 +27,7 @@ class AppRoute {
   static List<GetPage> routes = [
     GetPage(
         name: loginPage,
-        page: () => const Login(),
+        page: () => const LoginPage(),
         transition: Transition.cupertino),
     GetPage(
         name: homePage,

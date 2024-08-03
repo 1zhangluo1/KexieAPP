@@ -1,0 +1,15 @@
+{
+  "ID": 117,
+  "CreatedAt": "2024-08-01T18:28:15.271+08:00",
+  "UpdatedAt": "2024-08-01T21:37:12.673+08:00",
+  "DeletedAt": null,
+  "name": "张三",
+  "avatar": "/kexie-app/forum_pictures/2024-08-01/21-37-11-张洛-rwtjn.png",
+  "email": "123456789@qq.com",
+  "student_id": "2300310086",
+  "department": "软件部",
+  "learn_direction": "安卓开发",
+  "location": "5108",
+  "grade": "23",
+  "Posts": null
+}

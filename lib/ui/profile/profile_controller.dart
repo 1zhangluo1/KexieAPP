@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kexie_app/service/user.dart';
+
 
 class ProfileController extends GetxController {
+
   var themeModeText = '夜间模式'.obs;
   var themeModeSvg = 'svgs/dark_mode.svg'.obs;
 
@@ -45,7 +48,10 @@ class ProfileController extends GetxController {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                AppService().exitLogin();
+                Navigator.of(context).pop();
+              },
               child: Text(
                 '确定',
                 style:

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kexie_app/gen/assets.gen.dart';
+import 'package:kexie_app/global/global.dart';
+import 'package:kexie_app/internet/login.dart';
+import 'package:kexie_app/widgets/toast.dart';
 
-class Login extends StatelessWidget {
-  const Login({
+class LoginPage extends StatelessWidget {
+  const LoginPage({
     super.key,
   });
 
@@ -12,7 +16,7 @@ class Login extends StatelessWidget {
         TextEditingController(text: "");
     final TextEditingController studentIdController =
         TextEditingController(text: "");
-    FocusScopeNode? focusScopeNode;
+    var isLoading = false.obs;
     final GlobalKey formKey = GlobalKey<FormState>();
 
     return Scaffold(
@@ -65,7 +69,7 @@ class Login extends StatelessWidget {
                         height: 15,
                       ),
                       TextFormField(
-                        controller: nameController,
+                        controller: studentIdController,
                         decoration: const InputDecoration(
                           labelText: "学号",
                           hintText: "输入您的学号",
@@ -81,14 +85,33 @@ class Login extends StatelessWidget {
                       const SizedBox(
                         height: 45,
                       ),
-                      ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue[100],
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20)),
-                              minimumSize: const Size(double.infinity, 50)),
-                          child: const Text('登录')),
+                      Obx(
+                        () => ElevatedButton(
+                            onPressed: () async {
+                              if (!isLoading.value) {
+                                if ((formKey.currentState as FormState)
+                                    .validate()) {
+                                  if (Global.user.value.name.toString() ==
+                                      nameController.text.toString()) {
+                                    toast('此账号已登录');
+                                  } else {
+                                    isLoading.value = true;
+                                    await Login.login(
+                                        name: nameController.text,
+                                        studentId: studentIdController.text,
+                                        context: context);
+                                    isLoading.value = false;
+                                  }
+                                }
+                              } else if (isLoading.value) () => null;
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue[100],
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                minimumSize: const Size(double.infinity, 50)),
+                            child: Text(isLoading.value ? '登录中...' : '登录')),
+                      ),
                     ],
                   )),
             ],

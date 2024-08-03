@@ -1,11 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:kexie_app/gen/assets.gen.dart';
 import 'package:kexie_app/global/global.dart';
+import 'package:kexie_app/routes/route.dart';
 import 'package:kexie_app/ui/profile/profile_controller.dart';
 import 'package:kexie_app/widgets/image_button.dart';
+
+import '../../widgets/toast.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -22,73 +25,117 @@ class Profile extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(15,20,15,0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
+                padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                child: InkWell(
+                  onTap: () => Global.isLogin.value ? Get.toNamed(AppRoute.detailProfile) : Get.toNamed(AppRoute.loginPage),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surface,
                       gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [
-                            Theme.of(context).colorScheme.primary.withOpacity(0.7),
-                            Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                            Theme.of(context).colorScheme.primary.withOpacity(0.3),
+                            Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.7),
+                            Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.5),
+                            Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.3),
                           ]), //背景渐变
                       borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 35, 15, 40),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Obx(() => Global.isLogin.value
-                                ? const Text('账户头像')
-                                : ClipOval(
-                                    child: Image(
-                                    image: AssetImage(
-                                        Assets.image.loginfailHeadimage.path),
-                                    fit: BoxFit.contain,
-                                    width: 70,
-                                    height: 70,
-                                  ))),
-                            const SizedBox(
-                              width: 25,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 35, 15, 35),
+                      child: Obx(() => Global.isLogin.value
+                          ? Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text(
-                                  '张洛',
-                                  style: TextStyle(
-                                    color: Theme.of(context).colorScheme.surface,
-                                      fontSize: 21,
-                                      fontWeight: FontWeight.bold),
+                                ClipOval(
+                                    child: Container(
+                                      width: 70,
+                                      height: 70,
+                                      color: Colors.white,
+                                      child: CachedNetworkImage(
+                                        imageUrl:
+                                            'http://jzhangluo.com:9000${Global.user.value.avatar}',
+                                        fit: BoxFit.cover,
+                                        width: 60,
+                                        height: 60,
+                                      ),
+                                    )),
+                                const SizedBox(
+                                  width: 25,
                                 ),
-                                Text(
-                                  '软件部',
-                                  style: TextStyle(
-                                      color: Theme.of(context).colorScheme.surface,
-                                      fontSize: 17),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      Global.user.value.name,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                          fontSize: 21,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      Global.user.value.department,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                          fontSize: 17),
+                                    ),
+                                    Text(
+                                      Global.user.value.studentId,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                          fontSize: 17),
+                                    )
+                                  ],
                                 ),
-                                Text(
-                                  '2300320225',
-                                  style: TextStyle(
-                                      color: Theme.of(context).colorScheme.surface,
-                                      fontSize: 17),
-                                )
+                                Expanded(
+                                    child: Container(
+                                        alignment: Alignment.centerRight,
+                                        child: Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
+                                        )))
                               ],
-                            ),
-                            Expanded(
-                                child: Container(
-                                    alignment: Alignment.centerRight,
-                                    child: Icon(Icons.arrow_forward_ios,color: Theme.of(context).colorScheme.surface,)))
-                          ],
-                        ),
-                      ),
-                    ],
+                            )
+                          : Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                  Text(
+                                    '您还未登录，点击登录解锁更多功能',
+                                    style: TextStyle(
+                                        color:
+                                            Theme.of(context).colorScheme.surface,
+                                        fontSize: 16),
+                                  ),
+                                  Expanded(
+                                      child: Container(
+                                          alignment: Alignment.centerRight,
+                                          child: Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .surface,
+                                          ))),
+                                ])),
+                    ),
                   ),
                 ),
               ),
@@ -108,9 +155,12 @@ class Profile extends StatelessWidget {
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 3, crossAxisSpacing: 1),
                     children: const [
-                      ImageButton(title: '科协成员', imagePath: 'svgs/group.svg',color: Colors.greenAccent,),
                       ImageButton(
-                          title: '学校官网', imagePath: 'svgs/school.svg'),
+                        title: '科协成员',
+                        imagePath: 'svgs/group.svg',
+                        color: Colors.greenAccent,
+                      ),
+                      ImageButton(title: '学校官网', imagePath: 'svgs/school.svg'),
                       ImageButton(
                           title: '学校地图', imagePath: 'svgs/school_map.svg'),
                     ],
@@ -182,7 +232,10 @@ class Profile extends StatelessWidget {
                       child: Container(
                         height: 70,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withOpacity(0.8),
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
@@ -236,7 +289,11 @@ class Profile extends StatelessWidget {
                   Icons.arrow_forward_ios,
                   size: 26,
                 ),
-                leading: SvgPicture.asset('svgs/forum_record.svg',width: 26,height: 26,),
+                leading: SvgPicture.asset(
+                  'svgs/forum_record.svg',
+                  width: 26,
+                  height: 26,
+                ),
               ),
               ListTile(
                 title: Text(
@@ -292,7 +349,7 @@ class Profile extends StatelessWidget {
                 ),
               ),
               ListTile(
-                onTap: () => c.showExitDialog(context),
+                onTap: () => Global.isLogin.value ? c.showExitDialog(context) : toast('请先登录'),
                 title: Text(
                   '退出登录',
                   style: TextStyle(

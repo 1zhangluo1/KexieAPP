@@ -9,6 +9,16 @@
 
 import 'package:flutter/widgets.dart';
 
+class $HtmlGen {
+  const $HtmlGen();
+
+  /// File path: html/home_html.html
+  String get homeHtml => 'html/home_html.html';
+
+  /// List of all assets
+  List<String> get values => [homeHtml];
+}
+
 class $ImageGen {
   const $ImageGen();
 
@@ -20,10 +30,41 @@ class $ImageGen {
   List<AssetGenImage> get values => [loginfailHeadimage];
 }
 
+class $SvgsGen {
+  const $SvgsGen();
+
+  /// File path: svgs/dark_mode.svg
+  String get darkMode => 'svgs/dark_mode.svg';
+
+  /// File path: svgs/day_mode.svg
+  String get dayMode => 'svgs/day_mode.svg';
+
+  /// File path: svgs/forum_record.svg
+  String get forumRecord => 'svgs/forum_record.svg';
+
+  /// File path: svgs/group.svg
+  String get group => 'svgs/group.svg';
+
+  /// File path: svgs/school.svg
+  String get school => 'svgs/school.svg';
+
+  /// File path: svgs/school_map.svg
+  String get schoolMap => 'svgs/school_map.svg';
+
+  /// File path: svgs/sign_record.svg
+  String get signRecord => 'svgs/sign_record.svg';
+
+  /// List of all assets
+  List<String> get values =>
+      [darkMode, dayMode, forumRecord, group, school, schoolMap, signRecord];
+}
+
 class Assets {
   Assets._();
 
+  static const $HtmlGen html = $HtmlGen();
   static const $ImageGen image = $ImageGen();
+  static const $SvgsGen svgs = $SvgsGen();
 }
 
 class AssetGenImage {
