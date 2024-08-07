@@ -296,6 +296,7 @@ class Profile extends StatelessWidget {
                 ),
               ),
               ListTile(
+                onTap: () => Get.toNamed(AppRoute.signRecord),
                 title: Text(
                   '签到记录',
                   style: TextStyle(

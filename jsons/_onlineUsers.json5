@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "userId": 190891226,
+      "userName": "Xinjiang",
+      "userDept": "多媒体部",
+      "userLocation": "5108",
+      "status": 0
+    },
+    {
+      "userId": 190031022,
+      "userName": "唤雨考拉",
+      "userDept": "多媒体部",
+      "userLocation": "5108",
+      "status": 0
+    }
+  ],
+  "code": 0,
+  "msg": "成功获取在线用户列表"
+}

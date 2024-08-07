@@ -10,6 +10,64 @@ class Forum extends StatefulWidget{
 class _ForumState extends State<Forum> {
   @override
   Widget build(BuildContext context){
-    return Center(child: Text('论坛',textScaleFactor: 3,),);
+
+    ScrollController scrollController = ScrollController();
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            controller: scrollController,
+            child: Row(
+              children: [
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('d11111111'),
+              ],
+            ),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            controller: scrollController,
+            child: Row(
+              children: [
+                Text('这款早就随口'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),Text('data'),Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('d11111111'),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
