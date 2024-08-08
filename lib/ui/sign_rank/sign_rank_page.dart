@@ -241,7 +241,6 @@ class _SignRankPageState extends State<SignRankPage>
   BarChart barChart(List<Data> topFiveData) {
     return BarChart(
       BarChartData(
-        maxY: 100,
         borderData: FlBorderData(
             show: true,
             border: const Border(top: BorderSide.none,right: BorderSide.none,left: BorderSide(color: Colors.blue),bottom: BorderSide(color: Colors.blue)
@@ -250,7 +249,6 @@ class _SignRankPageState extends State<SignRankPage>
         gridData: FlGridData(
           show: true,
           drawHorizontalLine: true,
-          horizontalInterval: 10,
           drawVerticalLine: false,
           getDrawingHorizontalLine: (v) => FlLine(
             color: Colors.grey.withOpacity(0.3),
@@ -259,28 +257,37 @@ class _SignRankPageState extends State<SignRankPage>
         ),
         titlesData: FlTitlesData(
           show: true,
-          rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-          bottomTitles: AxisTitles(
-            sideTitles: SideTitles(
-              getTitlesWidget: (value,meta) {
-                return SideTitleWidget(child: Text('aaaa'), axisSide: meta.axisSide);
-              }
-            )
-          ),
+          rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          topTitles: AxisTitles(sideTitles: SideTitles(
+            showTitles: true,
+            getTitlesWidget: (value,meta) =>
+                SideTitleWidget(
+                  axisSide: meta.axisSide,
+                  space: 5,
+                  child: Text(c.topFiveUsers[value.toInt()].totalTime, style: const TextStyle(fontSize: 15,),),
+                ),
+          )),
+          bottomTitles: AxisTitles(sideTitles: SideTitles(
+            showTitles: true,
+            getTitlesWidget: (value,meta) {
+              return SideTitleWidget(
+                  space: 5,
+                  axisSide: meta.axisSide,
+                  child: Text(c.topFiveUsers[value.toInt()].userName,style:const TextStyle(
+                    fontSize: 14,
+                  ) ,),
+              );
+            },
+          ))
         ),
-        barGroups: List.generate(5, (i) {
+        barGroups: List.generate(c.usersCount.value, (i) {
           return BarChartGroupData(
-            x: (i+5) * 5,
+            x: i,
             barRods: [
             BarChartRodData(
-              toY: (i+5) * 5,
-              color: Colors.cyan,
-              width: 25,
-              backDrawRodData: BackgroundBarChartRodData(
-                show: true,
-                toY: 20,
-                color: Colors.cyan,
-              ),
+              toY: double.parse(c.topFiveUsers[i].totalTime),
+              color: Colors.deepPurpleAccent,
+              width: c.usersCount.value == 1 ? (MediaQuery.of(context).size.width - 200) / 2 : (MediaQuery.of(context).size.width - 200) / c.usersCount.value,
               borderRadius: BorderRadius.zero
             ),
           ],

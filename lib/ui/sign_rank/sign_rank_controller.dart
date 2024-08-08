@@ -21,9 +21,14 @@ class SignRankController extends GetxController {
       if (response.data['code'] == 0) {
         TopFiveUsers topFiveUsers = TopFiveUsers.fromJson(response.data);
         if (topFiveUsers.data.isNotEmpty) {
-        this.topFiveUsers.addAll(topFiveUsers.data);
-        usersCount.value = topFiveUsers.data.length;
-        week.value = topFiveUsers.data.first.week;
+          this.topFiveUsers.clear();
+          this.topFiveUsers.addAll(topFiveUsers.data);
+          usersCount.value = topFiveUsers.data.length;
+          week.value = topFiveUsers.data.first.week;
+          this.topFiveUsers.sort( (a,b) => b.totalTime.compareTo(a.totalTime)); //降序排序
+          for (int i = 0; i < this.topFiveUsers.length; i++) {
+            this.topFiveUsers[i].order = i + 1;
+          } //将排序序号赋予对应的顺序属性
         }
       } else {
         toastFailure(message: '获取排行榜失败', error: response.data['msg']);
