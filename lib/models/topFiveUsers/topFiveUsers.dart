@@ -4,11 +4,7 @@ part 'topFiveUsers.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class TopFiveUsers {
-
-  TopFiveUsers(
-      {required this.data,
-      required this.code,
-      required this.msg});
+  TopFiveUsers({required this.data, required this.code, required this.msg});
 
   @JsonKey(name: "data", defaultValue: [])
   List<Data> data;
@@ -19,24 +15,26 @@ class TopFiveUsers {
   @JsonKey(name: "msg", defaultValue: "")
   String msg;
 
+  factory TopFiveUsers.fromJson(Map<String, dynamic> json) =>
+      _$TopFiveUsersFromJson(json);
 
-  factory TopFiveUsers.fromJson(Map<String, dynamic> json) => _$TopFiveUsersFromJson(json);
-  
   Map<String, dynamic> toJson() => _$TopFiveUsersToJson(this);
-  
-  factory TopFiveUsers.emptyInstance() => TopFiveUsers(data: [], code: 0, msg: "");
+
+  factory TopFiveUsers.emptyInstance() =>
+      TopFiveUsers(data: [], code: 0, msg: "");
 }
 
 @JsonSerializable(explicitToJson: true)
 class Data {
-
-  Data(
-      {required this.userId,
-      required this.userName,
-      required this.userDept,
-      required this.userLocation,
-      required this.totalTime,
-      required this.week});
+  Data({
+    required this.userId,
+    required this.userName,
+    required this.userDept,
+    required this.userLocation,
+    required this.totalTime,
+    required this.week,
+    this.order,
+  });
 
   @JsonKey(name: "userId", defaultValue: 0)
   int userId;
@@ -56,12 +54,17 @@ class Data {
   @JsonKey(name: "week", defaultValue: 0)
   int week;
 
+  int? order;
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-  
+
   Map<String, dynamic> toJson() => _$DataToJson(this);
-  
-  factory Data.emptyInstance() => Data(userId: 0, userName: "", userDept: "", userLocation: "", totalTime: "", week: 0);
+
+  factory Data.emptyInstance() => Data(
+      userId: 0,
+      userName: "",
+      userDept: "",
+      userLocation: "",
+      totalTime: "",
+      week: 0);
 }
-
-

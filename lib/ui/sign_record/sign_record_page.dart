@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:kexie_app/global/global.dart';
 import 'package:kexie_app/routes/route.dart';
 import 'package:kexie_app/ui/sign_record/sign_record_controller.dart';
+import 'package:kexie_app/widgets/error_page.dart';
 import '../../models/signRecords/signRecords.dart';
 
 class SignRecordPage extends StatefulWidget {
@@ -36,25 +37,7 @@ class _SignRecordPageState extends State<SignRecordPage> {
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.done) {
                         if (snapshot.hasError) {
-                          return const Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.error,
-                                  color: Colors.red,
-                                  size: 80,
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                Text(
-                                  '数据加载失败',
-                                  style: TextStyle(fontSize: 20),
-                                ),
-                              ],
-                            ),
-                          );
+                          return ErrorPage.loadDataFailed;
                         } else {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
