@@ -171,36 +171,48 @@ class _SignRecordPageState extends State<SignRecordPage> {
                                                   )
                                                 : (index == c.records.length
                                                     ? const Padding(
-                                                        padding:
-                                                            EdgeInsets.fromLTRB(
-                                                                10, 15, 10, 15),
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Text(
-                                                              '没有更多数据了',
-                                                              style: TextStyle(
-                                                                  fontSize: 18,
-                                                                  color: Colors
-                                                                      .grey),
+                                                      padding: EdgeInsets.symmetric(vertical: 15.0),
+                                                      child: Row(
+                                                        children: [
+                                                          SizedBox(
+                                                            width:343,
+                                                            child: Center(
+                                                              child: Text(
+                                                                'END',
+                                                                style: TextStyle(
+                                                                    fontSize: 18,
+                                                                    color: Colors
+                                                                        .grey),
+                                                              ),
                                                             ),
-                                                            Text('没有更多数据了',
+                                                          ),
+                                                          SizedBox(
+                                                            width:343,
+                                                            child: Center(
+                                                              child: Text(
+                                                                'END',
                                                                 style: TextStyle(
-                                                                    fontSize:
-                                                                        18,
+                                                                    fontSize: 18,
                                                                     color: Colors
-                                                                        .grey)),
-                                                            Text('没有更多数据了',
+                                                                        .grey),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            width:343,
+                                                            child: Center(
+                                                              child: Text(
+                                                                'END',
                                                                 style: TextStyle(
-                                                                    fontSize:
-                                                                        18,
+                                                                    fontSize: 18,
                                                                     color: Colors
-                                                                        .grey)),
-                                                          ],
-                                                        ),
-                                                      )
+                                                                        .grey),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
                                                     : recordRow(c.records[index]));
                                           },
                                           separatorBuilder: (context, index) {

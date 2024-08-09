@@ -20,10 +20,6 @@ class ProfileController extends GetxController {
     themeModeSvg.value = Get.isDarkMode ? 'svgs/dark_mode.svg' : 'svgs/day_mode.svg';
   }
 
-  // void changeThemeColor() {
-  //   Get.changeTheme(ThemeData(colorSchemeSeed: Colors.));
-  // }
-
   void showExitDialog(BuildContext context) {
     showDialog(
       context: context,

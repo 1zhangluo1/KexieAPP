@@ -26,8 +26,11 @@ class $ImageGen {
   AssetGenImage get loginfailHeadimage =>
       const AssetGenImage('image/loginfail_headimage.png');
 
+  /// File path: image/school_map.jpg
+  AssetGenImage get schoolMap => const AssetGenImage('image/school_map.jpg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [loginfailHeadimage];
+  List<AssetGenImage> get values => [loginfailHeadimage, schoolMap];
 }
 
 class $SvgsGen {

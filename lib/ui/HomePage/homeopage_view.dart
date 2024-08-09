@@ -19,7 +19,7 @@ class _HomePagesState extends State<HomePages> {
     final c = Get.put(HomepageController());
     return Scaffold(
       appBar: AppBar(
-        title: Text('三院科协简介',style: TextStyle(
+        title: Text('三院科协',style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 28,
           color: Theme.of(context).colorScheme.onSurface

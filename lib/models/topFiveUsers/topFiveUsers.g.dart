@@ -29,6 +29,7 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       userLocation: json['userLocation'] as String? ?? '',
       totalTime: json['totalTime'] as String? ?? '',
       week: (json['week'] as num?)?.toInt() ?? 0,
+      order: (json['order'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
@@ -38,4 +39,5 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'userLocation': instance.userLocation,
       'totalTime': instance.totalTime,
       'week': instance.week,
+      'order': instance.order,
     };

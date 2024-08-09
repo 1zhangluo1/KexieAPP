@@ -43,10 +43,11 @@ class _ImageViewState extends State<ImageView> {
             child: CachedNetworkImage(
               imageUrl: widget.imgUrl,
               fit: BoxFit.cover,
-              placeholder: (context, url) => const CircularProgressIndicator(strokeWidth: 1,),
+              placeholder: (context, url) => const CircularProgressIndicator(strokeWidth: 5,),
               errorWidget: (context, url, error) => const Icon(Icons.error),
               imageBuilder: (context, imageProvider) => PhotoView(
                 imageProvider: imageProvider,
+                minScale: PhotoViewComputedScale.contained,
                 backgroundDecoration: BoxDecoration(color: Theme.of(context).colorScheme.surface),
               ),
             )),

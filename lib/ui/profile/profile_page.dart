@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:kexie_app/gen/assets.gen.dart';
 import 'package:kexie_app/global/global.dart';
 import 'package:kexie_app/routes/route.dart';
 import 'package:kexie_app/ui/profile/profile_controller.dart';
 import 'package:kexie_app/widgets/image_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/toast.dart';
 
@@ -154,15 +154,10 @@ class Profile extends StatelessWidget {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 3, crossAxisSpacing: 1),
-                    children: const [
-                      ImageButton(
-                        title: '科协成员',
-                        imagePath: 'svgs/group.svg',
-                        color: Colors.greenAccent,
-                      ),
-                      ImageButton(title: '学校官网', imagePath: 'svgs/school.svg'),
-                      ImageButton(
-                          title: '学校地图', imagePath: 'svgs/school_map.svg'),
+                    children: [
+                      ImageButton(title: '科协成员', imagePath: 'svgs/group.svg', color: Colors.greenAccent, function: () => Get.toNamed(AppRoute.kexieMembers),),
+                      ImageButton(title: '学校官网', imagePath: 'svgs/school.svg',function: () => launchUrl(Uri.parse('https://www.guet.edu.cn/')),),
+                      ImageButton(title: '学校地图', imagePath: 'svgs/school_map.svg',function: () => Get.toNamed(AppRoute.schoolMap),),
                     ],
                   ),
                 ),

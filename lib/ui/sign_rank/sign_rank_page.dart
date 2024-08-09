@@ -59,7 +59,7 @@ class _SignRankPageState extends State<SignRankPage>
             },
             children: [
               FutureBuilder(
-                  future: c.getTopFive(),
+                  future: c.getNewTopFive(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
                       return snapshot.hasError
@@ -86,12 +86,17 @@ class _SignRankPageState extends State<SignRankPage>
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text('签到时长排名',style: TextStyle(color: Theme.of(context).colorScheme.primary,fontWeight: FontWeight.bold,fontSize: 25),),
+          const SizedBox(height: 5,),
+          Obx(() => Text('第${c.week.value}周',style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 18))),
           const SizedBox(height: 20,),
-          Container(height: 350,width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: barChart(c.topFiveUsers),
-            )
+          Obx(
+            () => Expanded(
+              flex: 3,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: AspectRatio(aspectRatio: 1 ,child: barChart(c.topFiveUsers)),
+              ),
+            ),
           ),
           const SizedBox(height: 25,),
           Expanded(
@@ -241,15 +246,17 @@ class _SignRankPageState extends State<SignRankPage>
   BarChart barChart(List<Data> topFiveData) {
     return BarChart(
       BarChartData(
+        maxY: c.findMax(double.parse(c.topFiveUsers.first.totalTime)),
         borderData: FlBorderData(
             show: true,
-            border: const Border(top: BorderSide.none,right: BorderSide.none,left: BorderSide(color: Colors.blue),bottom: BorderSide(color: Colors.blue)
+            border: const Border(top: BorderSide.none,right: BorderSide.none,left: BorderSide(color: Colors.lightBlue),bottom: BorderSide(color: Colors.lightBlue)
             )
         ),
         gridData: FlGridData(
           show: true,
           drawHorizontalLine: true,
           drawVerticalLine: false,
+          horizontalInterval: c.findMax(double.parse(c.topFiveUsers.first.totalTime)) / 6,
           getDrawingHorizontalLine: (v) => FlLine(
             color: Colors.grey.withOpacity(0.3),
             strokeWidth: 1,
@@ -258,15 +265,7 @@ class _SignRankPageState extends State<SignRankPage>
         titlesData: FlTitlesData(
           show: true,
           rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-          topTitles: AxisTitles(sideTitles: SideTitles(
-            showTitles: true,
-            getTitlesWidget: (value,meta) =>
-                SideTitleWidget(
-                  axisSide: meta.axisSide,
-                  space: 5,
-                  child: Text(c.topFiveUsers[value.toInt()].totalTime, style: const TextStyle(fontSize: 15,),),
-                ),
-          )),
+          topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
           bottomTitles: AxisTitles(sideTitles: SideTitles(
             showTitles: true,
             getTitlesWidget: (value,meta) {
@@ -275,10 +274,11 @@ class _SignRankPageState extends State<SignRankPage>
                   axisSide: meta.axisSide,
                   child: Text(c.topFiveUsers[value.toInt()].userName,style:const TextStyle(
                     fontSize: 14,
+                    color: Colors.lightBlue
                   ) ,),
               );
             },
-          ))
+          )),
         ),
         barGroups: List.generate(c.usersCount.value, (i) {
           return BarChartGroupData(
@@ -286,13 +286,35 @@ class _SignRankPageState extends State<SignRankPage>
             barRods: [
             BarChartRodData(
               toY: double.parse(c.topFiveUsers[i].totalTime),
-              color: Colors.deepPurpleAccent,
+              color: c.colorOptions[i],
               width: c.usersCount.value == 1 ? (MediaQuery.of(context).size.width - 200) / 2 : (MediaQuery.of(context).size.width - 200) / c.usersCount.value,
               borderRadius: BorderRadius.zero
             ),
           ],
+            showingTooltipIndicators: [0],
           );
-        })
+        }),
+        barTouchData: BarTouchData(
+          enabled: true,
+          touchTooltipData: BarTouchTooltipData(
+            getTooltipColor: (group) => Colors.transparent,
+            tooltipPadding: EdgeInsets.zero,
+            tooltipMargin: 8,
+            getTooltipItem: (
+                BarChartGroupData group,
+                int groupIndex,
+                BarChartRodData rod,
+                int rodIndex,
+                ) {
+              return BarTooltipItem(
+                rod.toY.toString(),
+                TextStyle(
+                  color: rod.color,
+                ),
+              );
+            },
+          ),
+        )
       ),
       swapAnimationDuration: const Duration(milliseconds: 300),
       swapAnimationCurve: Curves.linear,
