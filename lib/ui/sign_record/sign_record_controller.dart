@@ -12,6 +12,25 @@ class SignRecordController extends GetxController {
   RxString selectedTerm = ''.obs;
   final ScrollController scrollController = ScrollController();
 
+  String formatTerm(String term) {
+    // 拆分输入字符串
+    final parts = term.split('_');
+    if (parts.length != 3) {
+      throw ArgumentError('Invalid format. Expected format is "yyyy_yyyy_n"');
+    }
+    final startYear = parts[0];
+    final endYear = parts[1];
+    final semesterCode = int.tryParse(parts[2]);
+
+    if (semesterCode == null || (semesterCode != 1 && semesterCode != 2)) {
+      throw ArgumentError('Invalid semester code. Must be 1 (上学期) or 2 (下学期).');
+    }
+    // 格式化学期
+    final semester = semesterCode == 1 ? '上学期' : '下学期';
+    // 拼接最终结果
+    return '$startYear-$endYear$semester';
+  }
+
   getTerms() async {
     dios.Dio dio = AppNetwork.get().kexieDio;
     try {
@@ -67,9 +86,13 @@ class SignRecordController extends GetxController {
       return 100;
     }
     DateTime startTime = DateTime.parse(start);
-    DateTime endTime = DateTime.parse(end);
-    Duration duration = endTime.difference(startTime);
-    double totalTime = duration.inMinutes / 60;
-    return double.parse(totalTime.toStringAsFixed(2));
+    DateTime endTime;
+    if (end.isNotEmpty) {
+      endTime =  DateTime.parse(end);
+      Duration duration = endTime.difference(startTime);
+      double totalTime = duration.inMinutes / 60;
+      return double.parse(totalTime.toStringAsFixed(2));
+    }
+    return 100;
   }
 }

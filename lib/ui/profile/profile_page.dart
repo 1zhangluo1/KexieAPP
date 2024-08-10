@@ -1,10 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:kexie_app/global/global.dart';
 import 'package:kexie_app/routes/route.dart';
 import 'package:kexie_app/ui/profile/profile_controller.dart';
+import 'package:kexie_app/ui/sign_system/sign_controller.dart';
+import 'package:kexie_app/utils/theme_controller.dart';
 import 'package:kexie_app/widgets/image_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,6 +19,7 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = Get.put(ProfileController());
+    final themeController = Get.put(ThemeController());
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 0,
@@ -173,7 +177,7 @@ class Profile extends StatelessWidget {
                       flex: 1,
                       child: InkWell(
                         onTap: () {
-                          c.changeThemeMode();
+                          themeController.changeThemeMode();
                         },
                         child: Obx(
                           () => Container(
@@ -198,7 +202,7 @@ class Profile extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SvgPicture.asset(
-                                  c.themeModeSvg.value,
+                                  themeController.themeModeSvg.value,
                                   width: 35,
                                   height: 35,
                                 ),
@@ -206,7 +210,7 @@ class Profile extends StatelessWidget {
                                   width: 6,
                                 ),
                                 Text(
-                                  c.themeModeText.value,
+                                  themeController.themeModeText.value,
                                   style: TextStyle(
                                       fontSize: 18,
                                       color: Theme.of(context)
@@ -224,48 +228,58 @@ class Profile extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 1,
-                      child: Container(
-                        height: 70,
-                        decoration: BoxDecoration(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(16),
-                          boxShadow: [
-                            BoxShadow(
+                      child: InkWell(
+                        onTap: () async {
+                          Color color = await showColorPickerDialog(
+                            context,
+                            themeController.primaryColor.value,
+                            title: const Text('选择应用主色调')
+                          );
+                          themeController.changeThemeColor(color);
+                        },
+                        child: Container(
+                            height: 70,
+                            decoration: BoxDecoration(
                               color: Theme.of(context)
                                   .colorScheme
-                                  .onSurface
-                                  .withOpacity(0.5), // 阴影颜色
-                              spreadRadius: 1.5, // 阴影扩散程度
-                              blurRadius: 6, // 阴影模糊半径
-                              offset: const Offset(0, 5), // 阴影偏移量
+                                  .primary
+                                  .withOpacity(0.8),
+                              borderRadius: BorderRadius.circular(16),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withOpacity(0.5), // 阴影颜色
+                                  spreadRadius: 1.5, // 阴影扩散程度
+                                  blurRadius: 6, // 阴影模糊半径
+                                  offset: const Offset(0, 5), // 阴影偏移量
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.color_lens_outlined,
-                              size: 35,
-                              color: Theme.of(context).colorScheme.surface,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.color_lens_outlined,
+                                  size: 35,
+                                  color: Theme.of(context).colorScheme.surface,
+                                ),
+                                const SizedBox(
+                                  width: 6,
+                                ),
+                                Text(
+                                  '主题换肤',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      color: Theme.of(context).colorScheme.surface),
+                                ),
+                              ],
                             ),
-                            const SizedBox(
-                              width: 6,
-                            ),
-                            Text(
-                              '主题换肤',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Theme.of(context).colorScheme.surface),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
-                    )
                   ],
                 ),
               ),

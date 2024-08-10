@@ -67,13 +67,6 @@ class SignController extends GetxController{
     }
   }
 
-  getTopFive() async {
-    dios.Dio dio = AppNetwork.get().kexieDio;
-    dios.Response response = await dio.get('/api/record/topFive');
-    if (response.data['code'] == 0) {
-    }
-  }
-
   getOnline() async {
     dios.Dio dio = AppNetwork.get().kexieDio;
     try {

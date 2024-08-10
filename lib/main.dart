@@ -5,21 +5,30 @@ import 'package:get/get.dart';
 import 'package:kexie_app/Internet/network.dart';
 import 'package:kexie_app/global/global.dart';
 import 'package:kexie_app/routes/route.dart';
+import 'package:kexie_app/utils/get_storage.dart';
+import 'package:kexie_app/utils/theme_controller.dart';
 import 'package:kexie_app/widgets/main_struct/main_struct_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Future.wait([
     () async {
-    await AppNetwork.initNetwork();
-    await Global.initUser();
-    } (),
+      await AppNetwork.initNetwork();
+      await Global.initUser();
+    }(),
   ]);
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final c = Get.put(ThemeController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +37,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       builder: FToastBuilder(),
       title: 'KeXieApp',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-        useMaterial3: true,
-      ),
+      theme: c.getThemeData(),
+      darkTheme: c.getThemeData(),
+      themeMode: c.themeMode.value,
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        body: MainStruct(),
-      ),
       navigatorKey: AppRoute.navigatorKey,
       getPages: AppRoute.routes,
     );

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kexie_app/global/global.dart';
@@ -94,8 +93,8 @@ class _SignPageState extends State<SignPage> {
                     },
                     style: ButtonStyle(
                       backgroundColor: c.isSign.value
-                          ? const WidgetStatePropertyAll(Colors.grey)
-                          : WidgetStatePropertyAll(
+                          ? const MaterialStatePropertyAll(Colors.grey)
+                          : MaterialStatePropertyAll(
                               Theme.of(context).colorScheme.primary),
                     ),
                     child: Text(
@@ -128,6 +127,7 @@ class _SignPageState extends State<SignPage> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: Theme.of(context).cardColor,
+                        borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
                             color: Theme.of(context)
@@ -291,49 +291,10 @@ class _SignPageState extends State<SignPage> {
                 child: ElevatedButton(
                     onPressed: () {c.complaintUser(user.userId);},
                     style: ButtonStyle(
-                        shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)))),
                     child: const Text('举报')))),
       ],
     );
   }
 }
-
-// SingleChildScrollView(
-// scrollDirection: Axis.horizontal,
-// child: Row(
-// children: [
-// Text('学号',style: TextStyle(fontSize: 16),),
-// SizedBox(width: 30,),
-// Text('姓名',style: TextStyle(fontSize: 16),),
-// SizedBox(width: 30,),
-// Text('部门',style: TextStyle(fontSize: 16),),
-// SizedBox(width: 30,),
-// Text('地点',style: TextStyle(fontSize: 16),),
-// SizedBox(width: 30,),
-// Text('操作',style: TextStyle(fontSize: 16),),
-// ]
-// ),
-// ),
-// SingleChildScrollView(
-// scrollDirection: Axis.horizontal,
-// child: Row(
-// children: [
-// Text('2300320225',style: TextStyle(fontSize: 16),),
-// SizedBox(width: 30,),
-// Text('张三',style: TextStyle(fontSize: 16),),
-// SizedBox(width: 30,),
-// Text('软件部',style: TextStyle(fontSize: 16),),
-// SizedBox(width: 30,),
-// Text('5108',style: TextStyle(fontSize: 16),),
-// SizedBox(width: 30,),
-// ElevatedButton(
-// onPressed: () => {},
-// style: const ButtonStyle(
-// surfaceTintColor: WidgetStatePropertyAll(Colors.grey),
-// ),
-// child: Text('举报',style: TextStyle(color: Theme.of(context).colorScheme.onSurface),),
-// ),
-// ]
-// ),
-// ),

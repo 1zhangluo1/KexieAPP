@@ -1,59 +1,24 @@
 {
     "data": [
         {
-            "userId": 190031022,
-            "userName": "唤雨考拉",
-            "userDept": "多媒体部",
+            "userId": 2300320225,
+            "userName": "张洛",
+            "userDept": "软件部",
             "userLocation": "5108",
-            "start": "2020-10-27 14:03:22",
-            "end": "2020-10-27 14:05:09",
-            "status": "已签退"
+            "start": "2024-08-10 19:08:34",
+            "end": "2024-08-10 19:16:57",
+            "status": "已签退",
+            "accumulatedTime": "0.14"
         },
         {
-            "userId": 190031022,
-            "userName": "唤雨考拉",
-            "userDept": "多媒体部",
+            "userId": 2300310309,
+            "userName": "余婷彬",
+            "userDept": "软件部",
             "userLocation": "5108",
-            "start": "2020-10-25 18:12:06",
-            "end": "2020-10-26 15:29:37",
-            "status": "已签退"
+            "start": "2024-06-08 20:24:30",
+            "status": "系统惩罚",
+            "accumulatedTime": '10800000'
         },
-        {
-            "userId": 190031022,
-            "userName": "唤雨考拉",
-            "userDept": "多媒体部",
-            "userLocation": "5108",
-            "start": "2020-10-25 18:11:28",
-            "end": "2020-10-27 14:03:13",
-            "status": "已签退"
-        },
-        {
-            "userId": 190031022,
-            "userName": "唤雨考拉",
-            "userDept": "多媒体部",
-            "userLocation": "5108",
-            "start": "2020-10-25 18:02:31",
-            "end": "2020-10-25 18:11:27",
-            "status": "被迫下线"
-        },
-        {
-            "userId": 190031022,
-            "userName": "唤雨考拉",
-            "userDept": "多媒体部",
-            "userLocation": "5108",
-            "start": "2020-10-25 15:40:43",
-            "end": "2020-10-25 18:02:29",
-            "status": "已签退"
-        },
-        {
-            "userId": 190031022,
-            "userName": "唤雨考拉",
-            "userDept": "多媒体部",
-            "userLocation": "5108",
-            "start": "2020-10-25 15:40:18",
-            "end": "2027-02-27 06:40:18",
-            "status": "已签退"
-        }
     ],
     "code": 0,
     "msg": "成功获取个人数据"

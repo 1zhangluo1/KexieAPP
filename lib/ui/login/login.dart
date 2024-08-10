@@ -29,19 +29,40 @@ class LoginPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ClipOval(
-                child: Image(
-                  image: AssetImage(Assets.image.loginfailHeadimage.path),
-                  height: 180,
-                  width: 180,
+              Container(
+                decoration: const BoxDecoration(
+                  color: Colors.black,
+                  shape: BoxShape.circle,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Image(
+                    image: AssetImage(Assets.image.kexieLogo.path),
+                    height: 120,
+                    width: 120,
+                  ),
                 ),
               ),
               const SizedBox(
-                height: 35,
+                height: 30,
               ),
-              const Text(
-                '三院科协',
-                textScaleFactor: 2.5,
+              const SizedBox(
+                width: 250,
+                child: Center(
+                  child: Text(
+                    '三院科协',
+                    style: TextStyle(fontWeight: FontWeight.bold,letterSpacing: 8,fontSize: 50),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 250,
+                child: Center(
+                  child: Text(
+                    'sanyuankexie',
+                    style: TextStyle(fontWeight: FontWeight.bold,letterSpacing: 2,fontSize: 30),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 35,
@@ -106,11 +127,11 @@ class LoginPage extends StatelessWidget {
                               } else if (isLoading.value) () => null;
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue[100],
+                                backgroundColor: Theme.of(context).colorScheme.primary,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
                                 minimumSize: const Size(double.infinity, 50)),
-                            child: Text(isLoading.value ? '登录中...' : '登录')),
+                            child: Text(isLoading.value ? '登录中...' : '登录',style: TextStyle(color: Theme.of(context).colorScheme.surface,fontSize: 18,letterSpacing: 10),)),
                       ),
                     ],
                   )),

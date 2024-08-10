@@ -4,6 +4,9 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class HomepageController extends GetxController{
   late WebViewController webViewController;
+  DateTime? lastPressed;
+  RxBool isLoading = true.obs;
+  RxBool isError = false.obs;
 
   void setNoticeBar() {
 

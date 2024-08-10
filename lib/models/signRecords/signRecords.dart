@@ -37,7 +37,8 @@ class Data {
       required this.userLocation,
       required this.start,
       required this.end,
-      required this.status});
+      required this.status,
+      required this.accumulatedTime});
 
   @JsonKey(name: "userId", defaultValue: 0)
   int userId;
@@ -60,12 +61,15 @@ class Data {
   @JsonKey(name: "status", defaultValue: "")
   String status;
 
+  @JsonKey(name: "accumulatedTime", defaultValue: "")
+  dynamic accumulatedTime;
+
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
   
   Map<String, dynamic> toJson() => _$DataToJson(this);
   
-  factory Data.emptyInstance() => Data(userId: 0, userName: "", userDept: "", userLocation: "", start: "", end: "", status: "");
+  factory Data.emptyInstance() => Data(userId: 0, userName: "", userDept: "", userLocation: "", start: "", end: "", status: "", accumulatedTime: "");
 }
 
 

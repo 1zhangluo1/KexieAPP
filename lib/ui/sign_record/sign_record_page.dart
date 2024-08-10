@@ -60,7 +60,7 @@ class _SignRecordPageState extends State<SignRecordPage> {
                               ),
                               Obx(
                                 () => DropdownButton<String>(
-                                  hint: Text(c.terms.first),
+                                  hint: Text(c.formatTerm(c.terms.first)),
                                   value: c.selectedTerm.value,
                                   onChanged: (String? newValue) async {
                                     c.selectedTerm.value == newValue
@@ -72,7 +72,7 @@ class _SignRecordPageState extends State<SignRecordPage> {
                                       (String value) {
                                     return DropdownMenuItem<String>(
                                       value: value,
-                                      child: Text(value),
+                                      child: Text(c.formatTerm(value)),
                                     );
                                   }).toList(),
                                 ),
@@ -213,7 +213,7 @@ class _SignRecordPageState extends State<SignRecordPage> {
                                                         ],
                                                       ),
                                                     )
-                                                    : recordRow(c.records[index]));
+                                                    : recordRow(c.records[index-1]));
                                           },
                                           separatorBuilder: (context, index) {
                                             return Container(
@@ -292,7 +292,7 @@ class _SignRecordPageState extends State<SignRecordPage> {
           ),
           SizedBox(
             width: 100,
-            child: Text(c.calculateTotalTime(record.start, record.end,record.status) == 100 ? '' : c.calculateTotalTime(record.start, record.end,record.status).toString(),
+            child: Text(record.accumulatedTime.toString(),
                 style: const TextStyle(fontSize: 16)),
           ),
           SizedBox(

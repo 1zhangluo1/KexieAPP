@@ -2,23 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kexie_app/service/user.dart';
 
+import '../sign_system/sign_controller.dart';
 
 class ProfileController extends GetxController {
 
-  var themeModeText = '夜间模式'.obs;
-  var themeModeSvg = 'svgs/dark_mode.svg'.obs;
-
-  void changeThemeMode() {
-    Get.changeTheme(Get.isDarkMode
-        ? ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-            primaryColor: Colors.white,
-            useMaterial3: true,
-          )
-        : ThemeData.dark());
-    themeModeText.value = Get.isDarkMode ? '夜间模式' : '日间模式';
-    themeModeSvg.value = Get.isDarkMode ? 'svgs/dark_mode.svg' : 'svgs/day_mode.svg';
-  }
+  SignController signController = Get.find();
 
   void showExitDialog(BuildContext context) {
     showDialog(
@@ -46,6 +34,7 @@ class ProfileController extends GetxController {
             TextButton(
               onPressed: () {
                 AppService().exitLogin();
+                signController.isSign.value = false;
                 Navigator.of(context).pop();
               },
               child: Text(
