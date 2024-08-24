@@ -1,0 +1,11 @@
+{
+  "name": "李明",
+  "email": "johndoe@example.com",
+  "student_id": "2400320101",
+  "phone": "12345678900",
+  "learn_direction": "安卓开发",
+  "is_manger": false,
+  "introduction": "A diligent student",
+  "reason_to_sign": "Interested in software development",
+  "impression": "Good first impression",
+}

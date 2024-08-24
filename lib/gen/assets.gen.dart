@@ -25,6 +25,10 @@ class $ImageGen {
   /// File path: image/kexie_logo.png
   AssetGenImage get kexieLogo => const AssetGenImage('image/kexie_logo.png');
 
+  /// File path: image/kexie_recruit_background.png
+  AssetGenImage get kexieRecruitBackground =>
+      const AssetGenImage('image/kexie_recruit_background.png');
+
   /// File path: image/loginfail_headimage.png
   AssetGenImage get loginfailHeadimage =>
       const AssetGenImage('image/loginfail_headimage.png');
@@ -33,7 +37,8 @@ class $ImageGen {
   AssetGenImage get schoolMap => const AssetGenImage('image/school_map.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [kexieLogo, loginfailHeadimage, schoolMap];
+  List<AssetGenImage> get values =>
+      [kexieLogo, kexieRecruitBackground, loginfailHeadimage, schoolMap];
 }
 
 class $SvgsGen {

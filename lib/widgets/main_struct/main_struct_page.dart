@@ -61,7 +61,7 @@ class _MainStructState extends State<MainStruct> {
                 onTap: (){},
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
-                  padding: const EdgeInsets.fromLTRB(16,8,16,16),
+                  padding: const EdgeInsets.fromLTRB(16,0,16,0),
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.surface,
                     borderRadius: const BorderRadius.vertical(top: Radius.circular(35)),
@@ -69,12 +69,14 @@ class _MainStructState extends State<MainStruct> {
                   ),
                   height: bottomToolbarHeight.value,
                   width: MediaQuery.of(context).size.width,
-                  child: GridView(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4, //横轴4个子widget
-                        childAspectRatio: 1.0 
+                  child: Center(
+                    child: GridView(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4, //横轴4个子widget
+                          childAspectRatio: 1
+                      ),
+                      children: bottomBarFunctions,
                     ),
-                    children: bottomBarFunctions,
                   ),
                 ),
               ),
@@ -105,7 +107,7 @@ class _MainStructState extends State<MainStruct> {
               bottomBarFunctions.addAll([
                 ContainImageButton(background: Colors.orange, icon: Icons.book, label: '图书借阅',event: () => Get.toNamed(AppRoute.bookBorrow),),
                 ContainImageButton(background: Colors.deepPurpleAccent, icon: Icons.equalizer, label: '打卡统计', event: () => Get.toNamed(AppRoute.signRank),),
-                ContainImageButton(background: Colors.pinkAccent, icon: Icons.add_reaction, label: '科协招新', event: () => Get.toNamed(AppRoute.signUp),),
+                ContainImageButton(background: Colors.pinkAccent, icon: Icons.add_reaction, label: '科协招新', event: () => Get.toNamed(AppRoute.recruit),),
                 ContainImageButton(background: Colors.blueGrey, icon: Icons.token, label: '优秀作品', event: () => c.toKeixeGithub(),),
                 ContainImageButton(background: Colors.greenAccent, icon: Icons.web, label: '科协官网',event: () => c.toKexieWeb(),),
                 ContainImageButton(background: Colors.yellow, icon: Icons.store, label: '科协git',event: () => c.toKexieGit(),),

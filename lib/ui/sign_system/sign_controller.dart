@@ -25,6 +25,9 @@ class SignController extends GetxController{
         week.value = response.data['data']['week'];
         await getOnline();
       } else {
+        if (response.data['code'] == -201) {
+          await getUserStatus();
+        }
         toastFailure(message: '签到失败',error: response.data['msg']);
       }
     } on Exception catch (e) {
@@ -74,7 +77,9 @@ class SignController extends GetxController{
       if (response.data['code'] == 0) {
         OnlineUsers onlineUsers = OnlineUsers.fromJson(response.data);
         peopleNums.value = onlineUsers.data.length;
+        this.onlineUsers.clear();
         this.onlineUsers.addAll(onlineUsers.data);
+        this.onlineUsers.forEach((u) => print(u.userName));
       } else {
         toastFailure(error: '获取在线用户失败');
       }

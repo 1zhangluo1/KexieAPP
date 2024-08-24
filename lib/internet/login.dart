@@ -16,7 +16,7 @@ class Login{
     });
     try {
       final Response response = await dio.post('/account/login',data: formData);
-      if (response.statusCode == 200) {
+      if (response.data['code'] == 200) {
         String token = response.data['data'];
         final pref = await SharedPreferences.getInstance();
         await pref.setString('token', token);
@@ -27,10 +27,7 @@ class Login{
         await Future.delayed(const Duration(milliseconds: 500));
         Navigator.of(context).pop();
       } else {
-        if (kDebugMode) {
-          print(response.statusCode);
-        }
-        toastFailure(error: '登录失败');
+        toastFailure(message: '登录失败' ,error: response.data['msg']);
         if (kDebugMode) {
           print(response.data);
         }

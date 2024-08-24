@@ -88,7 +88,7 @@ class _SignRankPageState extends State<SignRankPage>
           Text('签到时长排名',style: TextStyle(color: Theme.of(context).colorScheme.primary,fontWeight: FontWeight.bold,fontSize: 25),),
           const SizedBox(height: 5,),
           Obx(() => Text('第${c.week.value}周',style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 18))),
-          const SizedBox(height: 20,),
+          const SizedBox(height: 30,),
           Obx(
             () => Expanded(
               flex: 3,

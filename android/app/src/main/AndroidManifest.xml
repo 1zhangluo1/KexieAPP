@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
-        android:label="kexie_app"
+        android:label="科协App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

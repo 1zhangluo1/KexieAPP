@@ -47,7 +47,7 @@ void toastSuccess0(dynamic message, {Duration? duration}) {
   toastSuccess(message: message, duration: duration);
 }
 
-void toastSuccess({dynamic message, Duration? duration}) {
+void toastSuccess({dynamic message, Duration? duration,ToastGravity? toastGravity = ToastGravity.BOTTOM}) {
   if (!initFToast()) return;
 
   message ??= '成功';
@@ -67,7 +67,7 @@ void toastSuccess({dynamic message, Duration? duration}) {
 
   fToast.showToast(
     child: toast,
-    gravity: ToastGravity.BOTTOM,
+    gravity: toastGravity,
     toastDuration: duration ?? Duration(seconds: 2),
   );
 }
@@ -76,7 +76,7 @@ void toastFailure0(dynamic message, {error, Duration? duration}) {
   toastFailure(message: message, error: error, duration: duration);
 }
 
-void toastFailure({dynamic message, error, Duration? duration}) {
+void toastFailure({dynamic message, error, Duration? duration,ToastGravity? toastGravity = ToastGravity.BOTTOM}) {
   if (!initFToast()) return;
 
   message ??= '失败';
@@ -96,7 +96,7 @@ void toastFailure({dynamic message, error, Duration? duration}) {
 
   fToast.showToast(
     child: toast,
-    gravity: ToastGravity.BOTTOM,
+    gravity: toastGravity,
     toastDuration: duration ?? Duration(seconds: 2),
   );
 }

@@ -4,11 +4,11 @@ import 'package:kexie_app/ui/book_borrow_system/book_borrow_page.dart';
 import 'package:kexie_app/ui/detail_profile/detail_profile_page.dart';
 import 'package:kexie_app/ui/kexie_members/kexie_members_page.dart';
 import 'package:kexie_app/ui/login/login.dart';
+import 'package:kexie_app/ui/recruit/recruit_page.dart';
 import 'package:kexie_app/ui/school_map/school_map.dart';
 import 'package:kexie_app/ui/sign_rank/sign_rank_page.dart';
 import 'package:kexie_app/ui/sign_record/sign_record_page.dart';
 import 'package:kexie_app/ui/sign_system/sign_page.dart';
-import 'package:kexie_app/ui/sign_up/signup_page.dart';
 
 import '../widgets/main_struct/main_struct_page.dart';
 
@@ -22,7 +22,7 @@ class AppRoute {
   static const String themeMode = "/theme";
   static const String signRecord = "/sign_record";
   static const String bookBorrow = "/borrow_book";
-  static const String signUp = "/sign_up";
+  static const String recruit = "/recruit";
   static const String detailProfile = '/detail_profile';
   static const String signRank = '/sign_rank';
   static const String kexieMembers = '/kexie_members';
@@ -50,8 +50,8 @@ class AppRoute {
         page: () => const SignRankPage(),
         transition: Transition.cupertino),
     GetPage(
-        name: signUp,
-        page: () => const SignUpPage(),
+        name: recruit,
+        page: () => const RecruitPage(),
         transition: Transition.cupertino),
     GetPage(
         name: detailProfile,
