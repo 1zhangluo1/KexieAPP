@@ -140,7 +140,7 @@ class _RecruitPageState extends State<RecruitPage> {
                         }
                       },
                       style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(
+                          backgroundColor: MaterialStatePropertyAll(
                               Theme.of(context).colorScheme.primary)),
                       child: Text(
                         '提交',

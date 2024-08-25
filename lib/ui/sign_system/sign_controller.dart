@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart' as dios;
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:kexie_app/Internet/network.dart';
 import 'package:kexie_app/global/global.dart';
@@ -14,6 +14,7 @@ class SignController extends GetxController{
   var week = 1.obs;
   var peopleNums = 0.obs;
   RxList<Data> onlineUsers = <Data>[].obs;
+  RxList<Data> filterOnlineUsers = <Data>[].obs;
 
   sign() async {
     dios.Dio dio = AppNetwork.get().kexieDio;
@@ -79,7 +80,10 @@ class SignController extends GetxController{
         peopleNums.value = onlineUsers.data.length;
         this.onlineUsers.clear();
         this.onlineUsers.addAll(onlineUsers.data);
-        this.onlineUsers.forEach((u) => print(u.userName));
+        filterOnlineUsers.value = this.onlineUsers;
+        if (kDebugMode){
+          this.onlineUsers.forEach((u) => print(u.userName));
+        }
       } else {
         toastFailure(error: '获取在线用户失败');
       }
@@ -98,7 +102,6 @@ class SignController extends GetxController{
         await getOnline();
       } else {
         toastFailure(message: '举报失败',error: response.data['msg']);
-        print(response.data);
       }
     } on Exception catch (e) {
       toastFailure(message: '举报失败',error: e.toString());

@@ -20,10 +20,10 @@ class DetailProfileController extends GetxController {
   final imagePicker = ImagePicker();
   var image = Rxn<XFile>();
 
-  readAvatar() {
+  readAvatar(String url) {
     Get.to(
         ImageView(
-          imgUrl: "http://47.76.139.24:9000${Global.user.value.avatar}",
+          imgUrl: "http://47.76.139.24:9000$url",
         ),
         transition: Transition.cupertino);
   }
@@ -50,7 +50,7 @@ class DetailProfileController extends GetxController {
         toastFailure(error: '保存失败', message: response.data['msg']);
       }
     } on Exception catch (e) {
-      toastFailure(error: '保存失败', message: '请检查网络连接');
+      toastFailure(error: e, message: '保存失败');
     } finally {
       LoadingView.hide(context);
     }
@@ -94,7 +94,7 @@ class DetailProfileController extends GetxController {
           toastFailure(message: '保存失败', error: result.errorMessage);
         }
       } on Exception catch (e) {
-        toastFailure(error: '保存失败');
+        toastFailure(message:'保存失败',error: e.toString());
       } finally {
         LoadingView.hide(context); // Ensure this is always called
       }

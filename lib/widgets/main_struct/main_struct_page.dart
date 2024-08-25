@@ -28,6 +28,7 @@ class _MainStructState extends State<MainStruct> {
   Widget build(BuildContext context) {
     final c = Get.put(MainStructController());
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: GestureDetector(
         onTap: () {

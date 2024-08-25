@@ -1,0 +1,55 @@
+{
+  "code": 200,
+  "result": true,
+  "msg": "获取科协成员表成功",
+  "data": [
+    {
+      "ID": 1,
+      "CreatedAt": "2024-08-01T18:28:15.271+08:00",
+      "UpdatedAt": "2024-08-09T17:58:53.039+08:00",
+      "DeletedAt": null,
+      "name": "陈璐",
+      "avatar": "",
+      "email": "1042354296@qq.com",
+      "student_id": "1900300102",
+      "department": "多媒体部",
+      "learn_direction": "暂无数据",
+      "location": "5108",
+      "grade": "19",
+      "permission": 0,
+      "Posts": null
+    },
+    {
+      "ID": 2,
+      "CreatedAt": "2024-08-01T18:28:15.271+08:00",
+      "UpdatedAt": "2024-08-09T17:58:53.142+08:00",
+      "DeletedAt": null,
+      "name": "王禧玉",
+      "avatar": "",
+      "email": "1665312357@qq.com",
+      "student_id": "1900300106",
+      "department": "多媒体部",
+      "learn_direction": "暂无数据",
+      "location": "5102",
+      "grade": "19",
+      "permission": 0,
+      "Posts": null
+    },
+    {
+      "ID": 3,
+      "CreatedAt": "2024-08-01T18:28:15.271+08:00",
+      "UpdatedAt": "2024-08-09T17:58:53.239+08:00",
+      "DeletedAt": null,
+      "name": "刘柏良",
+      "avatar": "",
+      "email": "1048140512@qq.com",
+      "student_id": "1900300221",
+      "department": "软件部",
+      "learn_direction": "暂无数据",
+      "location": "5108",
+      "grade": "19",
+      "permission": 0,
+      "Posts": null
+    },
+  ]
+}

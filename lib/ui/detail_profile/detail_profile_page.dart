@@ -1,18 +1,9 @@
-import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:device_info_plus/device_info_plus.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/src/platform/platform.dart';
+import 'package:kexie_app/global/global.dart';
+import 'package:kexie_app/models/user_infor/user_infor.dart';
 import 'package:kexie_app/ui/detail_profile/detail_profile_controller.dart';
-import 'package:kexie_app/widgets/toast.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:saver_gallery/saver_gallery.dart';
-
-import '../../global/global.dart';
 
 class DetailProfilePage extends StatefulWidget {
   const DetailProfilePage({super.key});
@@ -234,7 +225,7 @@ class _DetailProfilePageState extends State<DetailProfilePage> {
               InkWell(
                 onTap: () {
                   Navigator.of(context).pop();
-                  c.readAvatar();
+                  c.readAvatar(Global.user.value.avatar);
                 },
                 child: Container(
                     width: double.infinity,
