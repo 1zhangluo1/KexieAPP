@@ -96,8 +96,8 @@ class _SignPageState extends State<SignPage> {
                         },
                         style: ButtonStyle(
                           backgroundColor: c.isSign.value
-                              ? const MaterialStatePropertyAll(Colors.grey)
-                              : MaterialStatePropertyAll(
+                              ? const WidgetStatePropertyAll(Colors.grey)
+                              : WidgetStatePropertyAll(
                                   Theme.of(context).colorScheme.primary),
                         ),
                         child: Text(
@@ -154,7 +154,7 @@ class _SignPageState extends State<SignPage> {
                                       )),
                                   AnimatedSearchBar(
                                     label: "搜索在线人员",
-                                    labelStyle: TextStyle(fontSize: 16),
+                                    labelStyle: const TextStyle(fontSize: 16),
                                     onChanged: (value) {
                                       c.filterOnlineUsers.value = c.onlineUsers.where((user) => user.userName.contains(value)).toList();
                                     },
@@ -300,7 +300,7 @@ class _SignPageState extends State<SignPage> {
                 child: ElevatedButton(
                     onPressed: () {c.complaintUser(user.userId);},
                     style: ButtonStyle(
-                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                        shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)))),
                     child: const Text('举报')))),
       ],

@@ -71,7 +71,7 @@ class _MemberInfoPageState extends State<MemberInfoPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 25,),
+              const SizedBox(height: 25,),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Card(
@@ -86,7 +86,7 @@ class _MemberInfoPageState extends State<MemberInfoPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('姓名',style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface),),
-                              Text(widget.member.name,style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface)),
+                              SelectableText(widget.member.name,style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface)),
                             ],
                           ),
                         ),
@@ -101,7 +101,7 @@ class _MemberInfoPageState extends State<MemberInfoPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('学号',style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface),),
-                              Text(widget.member.studentId,style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface)),
+                              SelectableText(widget.member.studentId,style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface)),
                             ],
                           ),
                         ),
@@ -116,7 +116,7 @@ class _MemberInfoPageState extends State<MemberInfoPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('年级',style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface),),
-                              Text('${widget.member.grade}级',style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface)),
+                              SelectableText('${widget.member.grade}级',style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface)),
                             ],
                           ),
                         ),
@@ -130,8 +130,8 @@ class _MemberInfoPageState extends State<MemberInfoPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('邮箱',style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface),),
-                              Text(widget.member.email,style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface)),
+                              Expanded(flex: 1,child: Text('邮箱',style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface),)),
+                              Flexible(flex:3,child: SelectableText(widget.member.email,style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface))),
                             ],
                           ),
                         ),
@@ -140,7 +140,7 @@ class _MemberInfoPageState extends State<MemberInfoPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 25,),
+              const SizedBox(height: 25,),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Card(
@@ -155,7 +155,7 @@ class _MemberInfoPageState extends State<MemberInfoPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('部门',style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface),),
-                              Text(widget.member.department,style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface)),
+                              SelectableText(widget.member.department,style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface),),
                             ],
                           ),
                         ),
@@ -170,7 +170,7 @@ class _MemberInfoPageState extends State<MemberInfoPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('学习方向',style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface),),
-                              Text(widget.member.learnDirection,style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface)),
+                              SelectableText(widget.member.learnDirection,style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface)),
                             ],
                           ),
                         ),
@@ -185,7 +185,7 @@ class _MemberInfoPageState extends State<MemberInfoPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('所在科协教室',style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface),),
-                              Text(widget.member.location,style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface)),
+                              SelectableText(widget.member.location,style: TextStyle(fontSize: 20,color: Theme.of(context).colorScheme.onSurface)),
                             ],
                           ),
                         ),

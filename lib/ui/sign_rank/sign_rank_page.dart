@@ -87,7 +87,7 @@ class _SignRankPageState extends State<SignRankPage>
         children: [
           Text('签到时长排名',style: TextStyle(color: Theme.of(context).colorScheme.primary,fontWeight: FontWeight.bold,fontSize: 25),),
           const SizedBox(height: 5,),
-          Obx(() => Text('第${c.week.value}周',style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 18))),
+          Obx(() => c.week.value == 0 ? Text('暂无数据',style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 18)) : Text('第${c.week.value}周',style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 18))),
           const SizedBox(height: 30,),
           Obx(
             () => Expanded(
@@ -246,7 +246,7 @@ class _SignRankPageState extends State<SignRankPage>
   BarChart barChart(List<Data> topFiveData) {
     return BarChart(
       BarChartData(
-        maxY: c.findMax(double.parse(c.topFiveUsers.first.totalTime)),
+        maxY: c.topFiveUsers.isNotEmpty ? c.findMax(double.parse(c.topFiveUsers.first.totalTime)) : 0,
         borderData: FlBorderData(
             show: true,
             border: const Border(top: BorderSide.none,right: BorderSide.none,left: BorderSide(color: Colors.lightBlue),bottom: BorderSide(color: Colors.lightBlue)
@@ -256,7 +256,7 @@ class _SignRankPageState extends State<SignRankPage>
           show: true,
           drawHorizontalLine: true,
           drawVerticalLine: false,
-          horizontalInterval: c.findMax(double.parse(c.topFiveUsers.first.totalTime)) / 6,
+          horizontalInterval: c.topFiveUsers.isNotEmpty ? c.findMax(double.parse(c.topFiveUsers.first.totalTime)) / 6 : 10,
           getDrawingHorizontalLine: (v) => FlLine(
             color: Colors.grey.withOpacity(0.3),
             strokeWidth: 1,

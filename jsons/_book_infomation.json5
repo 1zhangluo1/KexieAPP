@@ -1,0 +1,92 @@
+{
+  "code": 200,
+  "result": true,
+  "msg": "获取书籍信息成功",
+  "data": [
+    {
+      "ID": 1,
+      "CreatedAt": "2024-08-26T17:17:40.03+08:00",
+      "UpdatedAt": "2024-08-27T00:24:25.824+08:00",
+      "DeletedAt": null,
+      "name": "第一行代码Android",
+      "isbn": "9787115439789",
+      "count": 3,
+      "area": "",
+      "cover_image_url": [
+        "http://image12.bookschina.com/2017/20170405/B7373701.jpg"
+      ],
+      "author": "郭霖",
+      "publisher": "人民邮电出版社",
+      "Borrowers": null,
+      "BorrowRecords": null
+    },
+    {
+      "ID": 2,
+      "CreatedAt": "2024-08-26T17:17:40.03+08:00",
+      "UpdatedAt": "2024-08-27T00:24:27.243+08:00",
+      "DeletedAt": null,
+      "name": "深度学习",
+      "isbn": "9787115461476",
+      "count": 1,
+      "area": "",
+      "cover_image_url": [
+        "https://img1.doubanio.com/view/subject/l/public/s29518349.jpg"
+      ],
+      "author": "古德费洛 本吉奥 考维尔 赵申剑 黎彧君 符天凡 李凯",
+      "publisher": "人民邮电出版社",
+      "Borrowers": null,
+      "BorrowRecords": null
+    },
+    {
+      "ID": 3,
+      "CreatedAt": "2024-08-26T17:17:40.03+08:00",
+      "UpdatedAt": "2024-08-27T00:24:28.528+08:00",
+      "DeletedAt": null,
+      "name": "工程学导论",
+      "isbn": "9787111525585",
+      "count": 3,
+      "area": "",
+      "cover_image_url": [
+        "http://image12.bookschina.com/2015/20150803/B7114498.jpg"
+      ],
+      "author": "邵华",
+      "publisher": "机械工业出版社",
+      "Borrowers": null,
+      "BorrowRecords": null
+    },
+    {
+      "ID": 4,
+      "CreatedAt": "2024-08-26T17:17:40.03+08:00",
+      "UpdatedAt": "2024-08-27T18:39:52.816+08:00",
+      "DeletedAt": null,
+      "name": "用Python写网络爬虫",
+      "isbn": "9787115431790",
+      "count": 1,
+      "area": "",
+      "cover_image_url": [
+        "https://img1.doubanio.com/view/subject/l/public/s29088958.jpg"
+      ],
+      "author": "劳森",
+      "publisher": "人民邮电出版社",
+      "Borrowers": null,
+      "BorrowRecords": null
+    },
+    {
+      "ID": 5,
+      "CreatedAt": "2024-08-26T17:17:40.03+08:00",
+      "UpdatedAt": "2024-08-27T00:24:31.151+08:00",
+      "DeletedAt": null,
+      "name": "Python网络数据采集",
+      "isbn": "9787115416292",
+      "count": 1,
+      "area": "",
+      "cover_image_url": [
+        "https://img1.doubanio.com/view/subject/l/public/s29086659.jpg"
+      ],
+      "author": "米切尔",
+      "publisher": "人民邮电出版社",
+      "Borrowers": null,
+      "BorrowRecords": null
+    }
+  ]
+}

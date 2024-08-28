@@ -1,4 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kexie_app/models/book_infomation/book_infomation.dart';
+import 'package:kexie_app/ui/book_borrow_system/book_borrow_controller.dart';
 
 class BookBorrowPage extends StatefulWidget {
   const BookBorrowPage({super.key});
@@ -8,12 +12,111 @@ class BookBorrowPage extends StatefulWidget {
 }
 
 class _BookBorrowPageState extends State<BookBorrowPage> {
+  final c = Get.put(BookBorrowController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('图书借阅',style: TextStyle(color: Theme.of(context).colorScheme.onSurface),),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('科协书城'),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: IconButton(
+                  onPressed: () => debugPrint('aaaaaaaa'),
+                  icon: const Icon(
+                    Icons.search,
+                    size: 30,
+                  )),
+            ),
+            Obx(
+              () => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: IconButton(
+                    onPressed: () {
+                      c.isColumn.value = !c.isColumn.value;
+                    },
+                    icon: c.isColumn.value
+                        ? const Icon(
+                            Icons.grid_view_rounded,
+                            size: 30,
+                          )
+                        : const Icon(
+                            Icons.menu_outlined,
+                            size: 30,
+                          )),
+              ),
+            ),
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+          child: SafeArea(
+            child: Column(
+              children: [
+                Expanded(
+                    child: Obx(
+                  () => GridView.builder(
+                    itemCount: c.bookInformation.value.data.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3, //横轴有几个
+                      crossAxisSpacing: 30, //次轴方向间距
+                      childAspectRatio: 0.45,
+                    ),
+                    itemBuilder: (context, index) => singleBookWidget(
+                        c.bookInformation.value.data[index], context),
+                  ),
+                )),
+              ],
+            ),
+          ),
+        ));
   }
+}
+
+Widget singleBookWidget(Data book, BuildContext context) {
+  return InkWell(
+    splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
+    splashFactory: null,
+    onTap: () {
+      print(11111);
+    },
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: CachedNetworkImage(
+              height: (MediaQuery.of(context).size.width - 100) / 3 / 0.7,
+              fit: BoxFit.fill,
+              imageUrl: book.coverImageUrl.first,
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Flexible(
+          child: Text(
+            book.name,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontSize: 15,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
 }

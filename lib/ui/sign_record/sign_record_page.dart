@@ -297,7 +297,7 @@ class _SignRecordPageState extends State<SignRecordPage> {
           ),
           SizedBox(
             width: 100,
-            child: Text(record.status, style: const TextStyle(fontSize: 16)),
+            child: Text(record.status, style: TextStyle(fontSize: 16,color: record.status == '在线' ? Colors.green : Theme.of(context).colorScheme.onSurface)),
           ),
         ],
       ),

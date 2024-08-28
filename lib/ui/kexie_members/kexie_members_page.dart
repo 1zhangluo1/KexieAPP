@@ -2,10 +2,9 @@ import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:kexie_app/models/kexie_members/member_info_page.dart';
+import 'package:kexie_app/ui/kexie_members/member_info_page.dart';
 import 'package:kexie_app/ui/kexie_members/kexie_members_controller.dart';
 import 'package:kexie_app/widgets/error_page.dart';
-import 'package:kexie_app/widgets/toast.dart';
 
 class KexieMembersPage extends StatefulWidget {
   const KexieMembersPage({super.key});
@@ -26,7 +25,7 @@ class _KexieMembersPageState extends State<KexieMembersPage> {
           title: const Text('科协成员'),
           actions: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
               child: AnimSearchBar(
                 width: MediaQuery.of(context).size.width - 20,
                 textController: c.searchController,
