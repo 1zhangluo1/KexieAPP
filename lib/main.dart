@@ -5,9 +5,8 @@ import 'package:get/get.dart';
 import 'package:kexie_app/Internet/network.dart';
 import 'package:kexie_app/global/global.dart';
 import 'package:kexie_app/routes/route.dart';
-import 'package:kexie_app/utils/get_storage.dart';
 import 'package:kexie_app/utils/theme_controller.dart';
-import 'package:kexie_app/widgets/main_struct/main_struct_page.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +16,7 @@ void main() async {
       await Global.initUser();
     }(),
   ]);
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -35,6 +34,7 @@ class _MyAppState extends State<MyApp> {
     SystemChrome.setSystemUIOverlayStyle(Global.initSystemUiStyle);
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     return GetMaterialApp(
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       builder: FToastBuilder(),
       title: 'KeXieApp',
       theme: c.getThemeData(),

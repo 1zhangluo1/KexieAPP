@@ -96,8 +96,8 @@ class _SignPageState extends State<SignPage> {
                         },
                         style: ButtonStyle(
                           backgroundColor: c.isSign.value
-                              ? const WidgetStatePropertyAll(Colors.grey)
-                              : WidgetStatePropertyAll(
+                              ? const MaterialStatePropertyAll(Colors.grey)
+                              : MaterialStatePropertyAll(
                                   Theme.of(context).colorScheme.primary),
                         ),
                         child: Text(
@@ -300,7 +300,7 @@ class _SignPageState extends State<SignPage> {
                 child: ElevatedButton(
                     onPressed: () {c.complaintUser(user.userId);},
                     style: ButtonStyle(
-                        shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)))),
                     child: const Text('举报')))),
       ],

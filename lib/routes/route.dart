@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:kexie_app/ui/book_borrow_system/book_borrow_page.dart';
+import 'package:kexie_app/ui/about_app/about_app_page.dart';
+import 'package:kexie_app/ui/book_borrow_system/book_borrow_main_page/book_display_page.dart';
 import 'package:kexie_app/ui/detail_profile/detail_profile_page.dart';
 import 'package:kexie_app/ui/kexie_members/kexie_members_page.dart';
 import 'package:kexie_app/ui/login/login.dart';
@@ -10,6 +11,7 @@ import 'package:kexie_app/ui/sign_rank/sign_rank_page.dart';
 import 'package:kexie_app/ui/sign_record/sign_record_page.dart';
 import 'package:kexie_app/ui/sign_system/sign_page.dart';
 
+import '../ui/book_borrow_system/book_borrow_record/book_borrow_record_page.dart';
 import '../widgets/main_struct/main_struct_page.dart';
 
 class AppRoute {
@@ -27,6 +29,8 @@ class AppRoute {
   static const String signRank = '/sign_rank';
   static const String kexieMembers = '/kexie_members';
   static const String schoolMap = '/school_map';
+  static const String bookBorrowRecord = '/book_borrow_record';
+  static const String aboutApp = '/about_app';
 
   static List<GetPage> routes = [
     GetPage(
@@ -69,9 +73,13 @@ class AppRoute {
         name: kexieMembers,
         page: () => const KexieMembersPage(),
         transition: Transition.cupertino),
-    // GetPage(
-    //     name: about_our_app,
-    //     page: () => const Information(),
-    //     transition: Transition.cupertino),
+    GetPage(
+        name: bookBorrowRecord,
+        page: () => const BookBorrowRecordPage(),
+        transition: Transition.cupertino),
+    GetPage(
+        name: aboutApp,
+        page: () => const AboutAppPage(),
+        transition: Transition.cupertino),
   ];
 }

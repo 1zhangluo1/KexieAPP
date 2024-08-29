@@ -52,7 +52,7 @@ class RecruitEdit extends StatelessWidget {
                 ? const SizedBox(
                     height: 15,
                   )
-                : Text(
+                : SelectableText(
                     help!,
                     style: const TextStyle(color: Colors.grey),
                   ),
@@ -130,7 +130,7 @@ class _RecruitSelectState extends State<RecruitSelect> {
                 ? const SizedBox(
                     height: 0,
                   )
-                : Text(
+                : SelectableText(
                     widget.help!,
                     style: const TextStyle(color: Colors.grey),
                   ),

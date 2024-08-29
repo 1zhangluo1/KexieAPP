@@ -287,24 +287,6 @@ class Profile extends StatelessWidget {
                 height: 25,
               ),
               ListTile(
-                title: Text(
-                  '发帖记录',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onSurface,
-                    fontSize: 20,
-                  ),
-                ),
-                trailing: const Icon(
-                  Icons.arrow_forward_ios,
-                  size: 26,
-                ),
-                leading: SvgPicture.asset(
-                  'svgs/forum_record.svg',
-                  width: 26,
-                  height: 26,
-                ),
-              ),
-              ListTile(
                 onTap: () => Get.toNamed(AppRoute.signRecord),
                 title: Text(
                   '签到记录',
@@ -325,6 +307,43 @@ class Profile extends StatelessWidget {
               ),
               ListTile(
                 title: Text(
+                  '发帖记录',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSurface,
+                    fontSize: 20,
+                  ),
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 26,
+                ),
+                leading: SvgPicture.asset(
+                  'svgs/forum_record.svg',
+                  width: 26,
+                  height: 26,
+                ),
+              ),
+              ListTile(
+                onTap: () => Get.toNamed(AppRoute.bookBorrowRecord),
+                title: Text(
+                  '借阅记录',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSurface,
+                    fontSize: 20,
+                  ),
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 26,
+                ),
+                leading: const Icon(
+                  Icons.menu_book_outlined,
+                  color: Colors.deepOrangeAccent,
+                  size: 26,
+                )
+              ),
+              ListTile(
+                title: Text(
                   '分享应用',
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onSurface,
@@ -342,6 +361,7 @@ class Profile extends StatelessWidget {
                 ),
               ),
               ListTile(
+                onTap: () => Get.toNamed(AppRoute.aboutApp),
                 title: Text(
                   '关于应用',
                   style: TextStyle(

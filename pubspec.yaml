@@ -57,6 +57,9 @@ dependencies:
   animated_search_bar: ^2.7.2
   flutter_zoom_drawer: ^3.2.0
   extended_image: ^8.2.1
+  flutter_localization: ^0.2.1
+  intl: ^0.18.1
+  share_plus: ^10.0.0
 
 
 dev_dependencies:

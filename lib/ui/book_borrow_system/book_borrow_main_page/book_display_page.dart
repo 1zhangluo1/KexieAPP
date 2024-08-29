@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kexie_app/models/book_infomation/book_infomation.dart';
-import 'package:kexie_app/ui/book_borrow_system/book_borrow_controller.dart';
+import 'package:kexie_app/ui/book_borrow_system/detail_book/detail_book_page.dart';
+import 'book_display_controller.dart';
+
 
 class BookBorrowPage extends StatefulWidget {
   const BookBorrowPage({super.key});
@@ -59,8 +61,8 @@ class _BookBorrowPageState extends State<BookBorrowPage> {
                   () => GridView.builder(
                     itemCount: c.bookInformation.value.data.length,
                     gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, //横轴有几个
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 100, //横轴有几个
                       crossAxisSpacing: 30, //次轴方向间距
                       childAspectRatio: 0.45,
                     ),
@@ -81,7 +83,7 @@ Widget singleBookWidget(Data book, BuildContext context) {
     highlightColor: Colors.transparent,
     splashFactory: null,
     onTap: () {
-      print(11111);
+      Get.to(DetailBookPage(book: book),transition: Transition.cupertino);
     },
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,14 +93,15 @@ Widget singleBookWidget(Data book, BuildContext context) {
           decoration: BoxDecoration(
             border: Border.all(
               color: Theme.of(context).colorScheme.onSurface,
+              width: 0.5
             ),
             borderRadius: BorderRadius.circular(15),
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: CachedNetworkImage(
-              height: (MediaQuery.of(context).size.width - 100) / 3 / 0.7,
-              fit: BoxFit.fill,
+              height: 100 / 0.75,
+              fit: BoxFit.cover,
               imageUrl: book.coverImageUrl.first,
             ),
           ),
