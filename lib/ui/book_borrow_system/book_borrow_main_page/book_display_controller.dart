@@ -17,6 +17,10 @@ class BookBorrowController extends GetxController{
       final response = await dio.get('/book/get_books');
       if (response.statusCode == 200) {
         bookInformation.value = BookInfomation.fromJson(response.data);
+        List<Data> originalData = List.from(bookInformation.value.data);
+        for (int i=0;i<100;i++) {
+          bookInformation.value.data.addAll(originalData);
+        }
         // bookInformation.value.data.forEach((aaa) => print(aaa.name));
         // bookInformation.value.data.forEach((aaa) => aaa.name = 'swift编程实战-uml解析案例实战二十啊啊啊飒飒泡果的屁股');
       } else {
