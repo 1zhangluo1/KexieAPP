@@ -12,7 +12,7 @@ class BorrowAndReturn {
     try {
       final dio = AppNetwork.get().appDio;
       print(isbn);
-      Response response = await dio.post('/book/borrow',data: formData,options: Options(contentType: 'json'));
+      Response response = await dio.post('/book/borrow',data: formData);
       print(response.data.toString());
       if (response.data['code'] == 200) {
         toastSuccess(message: response.data['msg']);
