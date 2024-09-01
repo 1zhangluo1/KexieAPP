@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:kexie_app/global/global.dart';
 import 'package:kexie_app/routes/route.dart';
 import 'package:kexie_app/ui/profile/profile_controller.dart';
-import 'package:kexie_app/ui/sign_system/sign_controller.dart';
 import 'package:kexie_app/utils/theme_controller.dart';
 import 'package:kexie_app/widgets/image_button.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -343,6 +342,7 @@ class Profile extends StatelessWidget {
                 )
               ),
               ListTile(
+                onTap: () => c.shareApp(context),
                 title: Text(
                   '分享应用',
                   style: TextStyle(
