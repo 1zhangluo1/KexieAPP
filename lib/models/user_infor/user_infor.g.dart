@@ -19,6 +19,7 @@ UserInfor _$UserInforFromJson(Map<String, dynamic> json) => UserInfor(
       learnDirection: json['learn_direction'] as String? ?? '',
       location: json['location'] as String? ?? '',
       grade: json['grade'] as String? ?? '',
+      permission: (json['permission'] as num?)?.toInt() ?? 0,
       posts: json['Posts'],
     );
 
@@ -35,5 +36,6 @@ Map<String, dynamic> _$UserInforToJson(UserInfor instance) => <String, dynamic>{
       'learn_direction': instance.learnDirection,
       'location': instance.location,
       'grade': instance.grade,
+      'permission': instance.permission,
       'Posts': instance.posts,
     };

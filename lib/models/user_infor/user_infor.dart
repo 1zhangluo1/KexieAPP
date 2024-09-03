@@ -18,6 +18,7 @@ class UserInfor {
       required this.learnDirection,
       required this.location,
       required this.grade,
+      required this.permission,
       this.posts});
 
   @JsonKey(name: "ID", defaultValue: 0)
@@ -56,6 +57,9 @@ class UserInfor {
   @JsonKey(name: "grade", defaultValue: "")
   String grade;
 
+  @JsonKey(name: "permission", defaultValue: 0)
+  int permission;
+
   @JsonKey(name: "Posts")
   dynamic posts;
 
@@ -64,7 +68,7 @@ class UserInfor {
   
   Map<String, dynamic> toJson() => _$UserInforToJson(this);
   
-  factory UserInfor.emptyInstance() => UserInfor(iD: 0, createdAt: "", updatedAt: "", name: "", avatar: "", email: "", studentId: "", department: "", learnDirection: "", location: "", grade: "");
+  factory UserInfor.emptyInstance() => UserInfor(iD: 0, createdAt: "", updatedAt: "", name: "", avatar: "", email: "", studentId: "", department: "", learnDirection: "", location: "", grade: "", permission: 0);
 }
 
 

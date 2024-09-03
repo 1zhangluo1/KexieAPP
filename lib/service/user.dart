@@ -39,7 +39,7 @@ class AppService {
     final pref = await SharedPreferences.getInstance();
     pref.setString('token','');
     Global.isLogin.value = false;
-    Global.user.value = UserInfor(iD: -1, createdAt: '', updatedAt: '', name: '', avatar: '', email: '', studentId: '', department: '', learnDirection: '', location: '', grade: '');
+    Global.user.value = UserInfor(iD: -1, createdAt: '', updatedAt: '', name: '', avatar: '', email: '', studentId: '', department: '', learnDirection: '', location: '', grade: '', permission: 10);
     toastSuccess(message: '退出成功');
   }
 

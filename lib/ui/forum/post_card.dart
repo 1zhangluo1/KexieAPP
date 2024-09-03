@@ -100,18 +100,15 @@ class _PostCardState extends State<PostCard> {
                                   transition: Transition.fadeIn,
                                 );
                               },
-                              child: Hero(
-                                tag: widget.post.images.first,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: CachedNetworkImage(
-                                    imageUrl: widget.post.images.first,
-                                    fit: BoxFit.cover,
-                                    height: con.maxHeight,
-                                    width: con.maxWidth,
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
-                                  ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: CachedNetworkImage(
+                                  imageUrl: widget.post.images.first,
+                                  fit: BoxFit.cover,
+                                  height: con.maxHeight,
+                                  width: con.maxWidth,
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
                                 ),
                               ),
                             );
