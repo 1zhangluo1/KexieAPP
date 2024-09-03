@@ -1,0 +1,45 @@
+{
+  "code": 200,
+  "result": true,
+  "msg": "获取帖子成功",
+  "data": [
+    {
+      "ID": 1,
+      "CreatedAt": "2024-09-02T19:49:00.063+08:00",
+      "UpdatedAt": "2024-09-02T19:49:00.063+08:00",
+      "DeletedAt": null,
+      "text": "你好鸭，你好啊",
+      "images": [
+        "/kexie-app/kexieapp_post_images/2024-09-02/19-31-31-post-pgcxw.jpg",
+        "/kexie-app/kexieapp_post_images/2024-09-02/19-31-31-post-gtmmj.jpg",
+        "/kexie-app/kexieapp_post_images/2024-09-02/19-31-31-post-yaflf.jpg"
+      ],
+      "videos": null,
+      "user_id": 117,
+      "user_profile": {
+        "ID": 117,
+        "CreatedAt": "2024-08-01T18:28:15.271+08:00",
+        "UpdatedAt": "2024-09-02T19:25:26.305+08:00",
+        "DeletedAt": null,
+        "name": "张洛",
+        "avatar": "/kexie-app/kexieapp_avatar/2024-09-02/19-25-25-张洛-avatar-hugzm.jpg",
+        "email": "643733581@qq.com",
+        "student_id": "2300320225",
+        "department": "软件部",
+        "learn_direction": "安卓开发",
+        "location": "5108",
+        "grade": "23",
+        "permission": 0,
+        "Posts": null,
+        "Books": null
+      },
+      "parent_id": null,
+      "tag": "",
+      "likes_count": 0,
+      "is_liked": false,
+      "LikeUsers": [],
+      "watch_count": 0,
+      "replies_count": 0
+    }
+  ]
+}

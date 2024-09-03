@@ -61,6 +61,8 @@ class SignController extends GetxController{
           isSign.value = false;
         } else if (response.data['data']['status'] == 1) {
           isSign.value = true;
+          print(response.data['data']['week']);
+          week.value = response.data['data']['week'];
           await getOnline();
         }
       } else {

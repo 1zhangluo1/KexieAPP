@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:kexie_app/ui/about_app/about_app_page.dart';
 import 'package:kexie_app/ui/book_borrow_system/book_borrow_main_page/book_display_page.dart';
 import 'package:kexie_app/ui/detail_profile/detail_profile_page.dart';
+import 'package:kexie_app/ui/forum/forum_page.dart';
+import 'package:kexie_app/ui/forum/post_detail_page.dart';
+import 'package:kexie_app/ui/forum/send_post_page.dart';
 import 'package:kexie_app/ui/kexie_members/kexie_members_page.dart';
 import 'package:kexie_app/ui/login/login.dart';
 import 'package:kexie_app/ui/recruit/recruit_page.dart';
@@ -31,6 +34,8 @@ class AppRoute {
   static const String schoolMap = '/school_map';
   static const String bookBorrowRecord = '/book_borrow_record';
   static const String aboutApp = '/about_app';
+  static const String detailPost = '/detail_post';
+  static const String sendPostPage = '/send_post';
 
   static List<GetPage> routes = [
     GetPage(
@@ -77,6 +82,14 @@ class AppRoute {
         name: bookBorrowRecord,
         page: () => const BookBorrowRecordPage(),
         transition: Transition.cupertino),
+    GetPage(
+        name: sendPostPage,
+        page: () => SendPostPage(),
+        transition: Transition.cupertino),
+    // GetPage(
+    //     name: sendPostPage,
+    //     page: () => PostDetailPage(args: Get.arguments),
+    //     transition: Transition.cupertino),
     GetPage(
         name: aboutApp,
         page: () => const AboutAppPage(),

@@ -36,26 +36,17 @@ class _HomePagesState extends State<HomePages> {
           });
           return isFinish!;
         },
-        child: Stack(children: [
-          RefreshIndicator(
-            onRefresh: () async {
-              c.isLoading.value = true;
-              c.isError.value = false;
-              c.webViewController.reload();
-            },
-            child: Column(
-              children: [
-                Expanded(
-                  child: SafeArea(
-                    child: WebViewWidget(
-                      controller: c.webViewController,
-                    ),
-                  ),
+        child: Column(
+          children: [
+            Expanded(
+              child: SafeArea(
+                child: WebViewWidget(
+                  controller: c.webViewController,
                 ),
-              ],
+              ),
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }

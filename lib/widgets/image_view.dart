@@ -13,9 +13,10 @@ import 'package:photo_view/photo_view.dart';
 import 'package:saver_gallery/saver_gallery.dart';
 
 class ImageView extends StatefulWidget {
-  const ImageView({super.key, required this.imgUrl,});
+  const ImageView({super.key, required this.imgUrl, required this.backgroundColor,});
 
   final String imgUrl;
+  final Color backgroundColor;
 
   @override
   State<ImageView> createState() => _ImageViewState();
@@ -35,7 +36,10 @@ class _ImageViewState extends State<ImageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: widget.backgroundColor,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: widget.backgroundColor,
       ),
       body: Padding(
         padding: const EdgeInsets.only(bottom: 30),
@@ -48,7 +52,7 @@ class _ImageViewState extends State<ImageView> {
               imageBuilder: (context, imageProvider) => PhotoView(
                 imageProvider: imageProvider,
                 minScale: PhotoViewComputedScale.contained,
-                backgroundDecoration: BoxDecoration(color: Theme.of(context).colorScheme.surface),
+                backgroundDecoration: BoxDecoration(color: widget.backgroundColor),
               ),
             )),
       ),

@@ -23,6 +23,7 @@ class DetailProfileController extends GetxController {
   readAvatar(String url) {
     Get.to(
         ImageView(
+          backgroundColor: Colors.black,
           imgUrl: "http://47.76.139.24:9000$url",
         ),
         transition: Transition.cupertino);

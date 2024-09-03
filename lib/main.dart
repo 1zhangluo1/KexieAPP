@@ -6,7 +6,6 @@ import 'package:kexie_app/Internet/network.dart';
 import 'package:kexie_app/global/global.dart';
 import 'package:kexie_app/routes/route.dart';
 import 'package:kexie_app/utils/theme_controller.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +33,6 @@ class _MyAppState extends State<MyApp> {
     SystemChrome.setSystemUIOverlayStyle(Global.initSystemUiStyle);
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     return GetMaterialApp(
-      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       builder: FToastBuilder(),
       title: 'KeXieApp',
       theme: c.getThemeData(),

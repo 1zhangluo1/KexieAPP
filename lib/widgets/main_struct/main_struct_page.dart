@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kexie_app/routes/route.dart';
-import 'package:kexie_app/ui/forum/forumpage.dart';
 import 'package:kexie_app/ui/profile/profile_page.dart';
 import 'package:kexie_app/ui/sign_system/sign_page.dart';
 import 'package:kexie_app/widgets/contain_image_button.dart';
 import 'package:kexie_app/widgets/main_struct/main_struct_controller.dart';
 
 import '../../ui/HomePage/homeopage_view.dart';
+import '../../ui/forum/forum_page.dart';
 
 class MainStruct extends StatefulWidget {
   const MainStruct({super.key});
@@ -52,7 +52,7 @@ class _MainStructState extends State<MainStruct> {
               children: const [
                 HomePages(),
                 SignPage(),
-                Forum(),
+                ForumPage(),
                 Profile(),
               ],
             ),

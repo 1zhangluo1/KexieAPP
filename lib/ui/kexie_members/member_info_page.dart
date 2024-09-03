@@ -46,7 +46,7 @@ class _MemberInfoPageState extends State<MemberInfoPage> {
                   child: Align(
                     alignment: Alignment.center,
                     child: InkWell(
-                      onDoubleTap: () => Get.to(ImageView(imgUrl: 'http://jzhangluo.com:9000${widget.member.avatar}'),transition: Transition.cupertino),
+                      onDoubleTap: () => Get.to(ImageView(backgroundColor: Colors.black,imgUrl: 'http://jzhangluo.com:9000${widget.member.avatar}'),transition: Transition.cupertino),
                       child: Container(
                         width: 120,
                         height: 120,
