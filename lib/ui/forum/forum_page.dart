@@ -6,7 +6,6 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:kexie_app/global/global.dart';
 import 'package:kexie_app/models/forum_posts/forum_posts.dart';
 import 'package:kexie_app/routes/route.dart';
-import 'package:kexie_app/widgets/error_page.dart';
 import 'package:kexie_app/widgets/keep_alive_wrapper.dart';
 import 'forum_controller.dart';
 import 'post_card.dart';
@@ -32,14 +31,13 @@ class PostPage extends StatelessWidget {
             return PostCard(
               post: post,
               onChangeLikePost: (bool isLiked) async {
-                // if (isLiked) {
-                //   await postController.unlike(post.id);
-                //   return false;
-                // } else {
-                //   await postController.like(post.id);
-                //   return true;
-                // }
-                return false;
+                if (isLiked) {
+                  await postController.unlike(post.iD);
+                  return false;
+                } else {
+                  await postController.like(post.iD);
+                  return true;
+                }
               },
             );
           },

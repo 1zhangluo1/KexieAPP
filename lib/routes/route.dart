@@ -84,12 +84,12 @@ class AppRoute {
         transition: Transition.cupertino),
     GetPage(
         name: sendPostPage,
-        page: () => SendPostPage(),
+        page: () => const SendPostPage(),
         transition: Transition.cupertino),
-    // GetPage(
-    //     name: sendPostPage,
-    //     page: () => PostDetailPage(args: Get.arguments),
-    //     transition: Transition.cupertino),
+    GetPage(
+        name: detailPost,
+        page: () => PostDetailPage(args: Get.arguments),
+        transition: Transition.cupertino),
     GetPage(
         name: aboutApp,
         page: () => const AboutAppPage(),

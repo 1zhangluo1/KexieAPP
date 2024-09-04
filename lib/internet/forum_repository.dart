@@ -11,7 +11,7 @@ class ForumRepository {
     String order = 'desc',
     String? userId,
     String? categoryId,
-    String? parentId,
+    int? parentId,
   }) async {
     final queryParameters = {
       'page': page,
@@ -28,7 +28,7 @@ class ForumRepository {
       queryParameters: queryParameters,
     );
     final postsResp = ForumPosts.fromJson(response.data);
-    print(postsResp.data.first.text);
+    print(postsResp.data.length);
     return postsResp
       ..data = postsResp.data
           .map((e) => e
@@ -37,20 +37,20 @@ class ForumRepository {
           .toList();
   }
 
-  // Future<CommonResponse> like(String postId) async {
-  //   final response = await dio.put("forum/post/${postId}/like");
-  //   return CommonResponse.fromJson(response.data);
-  // }
-  //
-  // Future<CommonResponse> unlike(String postId) async {
-  //   final response = await dio.delete("forum/post/${postId}/unlike");
-  //   return CommonResponse.fromJson(response.data);
-  // }
-  //
-  // Future<CommonResponse> view(String postId) async {
-  //   final response = await dio.put("forum/post/${postId}/view");
-  //   return CommonResponse.fromJson(response.data);
-  // }
+  Future<int> like(int postId) async {
+    final response = await dio.put("/forum/like/$postId");
+    return response.data['code'];
+  }
+
+  Future<int> unlike(int postId) async {
+    final response = await dio.delete("/forum/unlike/$postId");
+    return response.data['code'];
+  }
+
+  Future<int> view(int postId) async {
+    final response = await dio.put("/forum/watch/$postId");
+    return response.data['code'];
+  }
 
   ForumRepository._create();
 

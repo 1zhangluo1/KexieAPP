@@ -10,6 +10,7 @@ import 'package:kexie_app/widgets/loading_view.dart';
 import '../../widgets/toast.dart';
 
 class SendPostController extends GetxController {
+
   final contentController = TextEditingController();
   final imagePicker = ImagePicker();
   var contentIsNotBlank = false.obs;

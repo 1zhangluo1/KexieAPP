@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:kexie_app/Internet/network.dart';
 import 'package:kexie_app/models/forum_posts/forum_posts.dart';
 import '../../internet/forum_repository.dart';
+import '../../widgets/toast.dart';
 
 class PostPageController extends GetxController {
   final String categoryId;
@@ -45,19 +44,20 @@ class PostPageController extends GetxController {
     pagingController.refresh();
   }
 
-  // Future<void> like(String postId) async {
-  //   final resp = await ForumRepository.get().like(postId);
-  //   if (!resp.success) {
-  //     toastFailure0("点赞失败", error: resp.msg);
-  //     throw Exception("点赞失败");
-  //   }
-  // }
-  //
-  // Future<void> unlike(String postId) async {
-  //   final resp = await ForumRepository.get().unlike(postId);
-  //   if (!resp.success) {
-  //     toastFailure0("取消点赞失败", error: resp.msg);
-  //     throw Exception("点赞失败");
-  //   }
-  // }
+  Future<void> like(int postId) async {
+    final response = await ForumRepository.get().like(postId);
+    if (response != 200) {
+      toastFailure(message: "点赞失败");
+      throw Exception("点赞失败");
+    }
+  }
+
+  Future<void> unlike(int postId) async {
+    final resp = await ForumRepository.get().unlike(postId);
+    if (resp != 200) {
+      toastFailure(message: "取消点赞失败");
+      throw Exception("点赞失败");
+    }
+  }
+
 }

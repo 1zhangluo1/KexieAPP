@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:kexie_app/ui/forum/post_detail_page.dart';
 import '../../models/forum_posts/forum_posts.dart';
+import '../../routes/route.dart';
 import '../../widgets/image_view.dart';
 
 typedef OnChangeLikePost = Future<bool> Function(bool isLiked);
@@ -24,9 +26,9 @@ class _PostCardState extends State<PostCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Get.toNamed(AppRoute.postDetailPage,
-        //     preventDuplicates: false,
-        //     arguments: PostDetailPageArgs(post: widget.post));
+        Get.toNamed(AppRoute.detailPost,
+            preventDuplicates: false,
+            arguments: PostDetailPageArgs(post: widget.post));
       },
       child: Padding(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
@@ -122,10 +124,10 @@ class _PostCardState extends State<PostCard> {
                       children: [
                         IconButton(
                           onPressed: () {
-                            // Get.toNamed(AppRoute.postDetailPage,
-                            //     preventDuplicates: false,
-                            //     arguments:
-                            //         PostDetailPageArgs(post: widget.post));
+                            Get.toNamed(AppRoute.detailPost,
+                                preventDuplicates: false,
+                                arguments:
+                                    PostDetailPageArgs(post: widget.post));
                           },
                           icon: Padding(
                             padding:
@@ -161,12 +163,7 @@ class _PostCardState extends State<PostCard> {
                                 const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Row(
                               children: [
-                                Icon(
-                                  widget.post.isLiked
-                                      ? Icons.favorite
-                                      : Icons.favorite_border_outlined,
-                                  size: 18,
-                                ),
+                                widget.post.isLiked ? const Icon(Icons.favorite,color: Colors.red,size: 18,) : const Icon(Icons.favorite_border_outlined,size: 18,),
                                 const SizedBox(width: 6),
                                 Text(widget.post.likesCount.toString()),
                               ],
@@ -189,7 +186,7 @@ class _PostCardState extends State<PostCard> {
                               ],
                             ),
                           ),
-                        ),
+                        ) ,
                       ],
                     ),
                   ),
