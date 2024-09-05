@@ -305,6 +305,7 @@ class Profile extends StatelessWidget {
                 ),
               ),
               ListTile(
+                onTap: () => Get.toNamed(AppRoute.postRecord),
                 title: Text(
                   '发帖记录',
                   style: TextStyle(

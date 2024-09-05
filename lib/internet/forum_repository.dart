@@ -9,7 +9,7 @@ class ForumRepository {
     int pageSize = 30,
     String sortBy = 'created_at',
     String order = 'desc',
-    String? userId,
+    int? userId,
     String? categoryId,
     int? parentId,
   }) async {
@@ -49,6 +49,11 @@ class ForumRepository {
 
   Future<int> view(int postId) async {
     final response = await dio.put("/forum/watch/$postId");
+    return response.data['code'];
+  }
+
+  Future<int> deletePost(int postId) async {
+    final response = await dio.delete("/forum/delete/$postId");
     return response.data['code'];
   }
 

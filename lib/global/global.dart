@@ -11,6 +11,7 @@ class Global {
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: Colors.transparent);
+  static Rx<ThemeMode> themeMode = ThemeMode.light.obs;
   static RxBool isLogin = false.obs;
   static Rx<UserInfor> user = UserInfor(iD: -1, createdAt: '', updatedAt: '', name: '', avatar: '', email: '', studentId: '', department: '', learnDirection: '', location: '', grade: '', permission: 10).obs;
 

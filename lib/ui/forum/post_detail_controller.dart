@@ -8,12 +8,14 @@ import 'package:kexie_app/internet/forum_repository.dart';
 import '../../Internet/network.dart';
 import '../../models/forum_posts/forum_posts.dart';
 import '../../widgets/toast.dart';
+import 'package:dio/dio.dart' as dios;
 
 class PostDetailController extends GetxController {
   final Post post;
   final TextEditingController replyController = TextEditingController();
   final focus = FocusNode().obs;
-  final PagingController<int, Post> pagingController = PagingController(firstPageKey: 1);
+  final PagingController<int, Post> pagingController =
+      PagingController(firstPageKey: 1);
   static const int pageSize = 20;
   final Rx<int> watchCount;
   final isSending = false.obs;
@@ -21,6 +23,7 @@ class PostDetailController extends GetxController {
   final imagePicker = ImagePicker();
   var images = <XFile>[].obs;
   RxList<String> imageUrls = <String>[].obs;
+  final dio = AppNetwork.get().appDio;
 
   PostDetailController({required this.post}) : watchCount = post.watchCount.obs;
 
@@ -91,10 +94,41 @@ class PostDetailController extends GetxController {
     }
   }
 
+  Future<List<String>> uploadImages() async {
+    List<String> imagesPaths = [];
+    try {
+      final multipartFiles = await Future.wait(
+        images.map((image) async {
+          return dios.MultipartFile.fromFile(image.path, filename: image.name);
+        }).toList(),
+      );
+      final formData = dios.FormData.fromMap({
+        'images': multipartFiles,
+      });
+      final response = await dio.post('/forum/upload_images', data: formData);
+      if (response.data['code'] == 200) {
+        imagesPaths.addAll(
+            (response.data['data'] as List).map((e) => e.toString()).toList());
+        return imagesPaths;
+      } else {
+        toastFailure(message: response.data['msg']);
+        return imagesPaths;
+      }
+    } on Exception catch (e) {
+      toastFailure(message: e.toString());
+      return imagesPaths;
+    }
+  }
+
   Future<void> replyPost(int parentId, String text, List<String> images) async {
     try {
       isSending.value = true;
-      final dio = AppNetwork.get().appDio;
+      if (images.isNotEmpty) {
+        imageUrls.value = await uploadImages();
+        if (imageUrls.isEmpty) {
+          return;
+        }
+      }
       Map<String, dynamic> data = {
         "parent_id": parentId,
         "text": text,
@@ -104,6 +138,9 @@ class PostDetailController extends GetxController {
       if (response.data['code'] == 200) {
         toastSuccess0("评论成功");
         if (focus.value.hasFocus) focus.value.unfocus();
+        replyController.clear();
+        this.images.clear();
+        imageUrls.clear();
         refresh();
       } else {
         toastFailure(message: '评论失败', error: response.data['msg']);
@@ -115,7 +152,6 @@ class PostDetailController extends GetxController {
       toastFailure(message: '评论失败：', error: e);
     } finally {
       isSending.value = false;
-      replyController.clear();
     }
   }
 
@@ -128,7 +164,7 @@ class PostDetailController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    replyController.addListener((){
+    replyController.addListener(() {
       replyIsBlank.value = !replyController.text.isNotEmpty;
     });
     pagingController.addPageRequestListener((pageKey) {
@@ -143,5 +179,4 @@ class PostDetailController extends GetxController {
       }
     }
   }
-
 }

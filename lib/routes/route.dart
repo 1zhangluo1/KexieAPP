@@ -4,6 +4,7 @@ import 'package:kexie_app/ui/about_app/about_app_page.dart';
 import 'package:kexie_app/ui/book_borrow_system/book_borrow_main_page/book_display_page.dart';
 import 'package:kexie_app/ui/detail_profile/detail_profile_page.dart';
 import 'package:kexie_app/ui/forum/forum_page.dart';
+import 'package:kexie_app/ui/forum/forum_post_record/post_record_page.dart';
 import 'package:kexie_app/ui/forum/post_detail_page.dart';
 import 'package:kexie_app/ui/forum/send_post_page.dart';
 import 'package:kexie_app/ui/kexie_members/kexie_members_page.dart';
@@ -36,6 +37,7 @@ class AppRoute {
   static const String aboutApp = '/about_app';
   static const String detailPost = '/detail_post';
   static const String sendPostPage = '/send_post';
+  static const String postRecord = '/post_record';
 
   static List<GetPage> routes = [
     GetPage(
@@ -89,6 +91,10 @@ class AppRoute {
     GetPage(
         name: detailPost,
         page: () => PostDetailPage(args: Get.arguments),
+        transition: Transition.cupertino),
+    GetPage(
+        name: postRecord,
+        page: () => PostRecordPage(),
         transition: Transition.cupertino),
     GetPage(
         name: aboutApp,

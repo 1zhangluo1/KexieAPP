@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:get/route_manager.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kexie_app/Internet/network.dart';
 import 'package:kexie_app/widgets/loading_view.dart';

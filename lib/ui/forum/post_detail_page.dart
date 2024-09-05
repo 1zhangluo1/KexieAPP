@@ -118,7 +118,7 @@ class PostDetailPage extends StatelessWidget {
                           maxLines: 5,
                           minLines: 1,
                           decoration: InputDecoration(
-                              fillColor: Colors.white,
+                              fillColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white ,
                               filled: true,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
@@ -138,7 +138,7 @@ class PostDetailPage extends StatelessWidget {
                                   Obx(
                                     () => IconButton(
                                         onPressed: c.isSending.isTrue ||
-                                                c.replyIsBlank.isTrue
+                                                (c.replyIsBlank.isTrue && c.images.isEmpty)
                                             ? null
                                             : () {
                                                 c.replyPost(
