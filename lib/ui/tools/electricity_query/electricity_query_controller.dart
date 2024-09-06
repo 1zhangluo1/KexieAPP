@@ -33,11 +33,11 @@ class ElectricityQueryController extends GetxController {
     try {
       final dio = dios.Dio(dios.BaseOptions(baseUrl: 'http://sdcx.guet.edu.cn',));
       querying.value = true;
+      isQuery.value = true;
       final response = await dio.get('/yktserver/ecardserv/ykt.asmx/GetYDLSByRoomno',queryParameters: queryParam);
       if (response.statusCode == 200) {
         isQuery.value = true;
         electricityData.value = parseXmlData(response.data);
-        electricityData.forEach((e) => print(electricityData.toString()));
       } else {
         toastFailure(message: '查询失败');
       }

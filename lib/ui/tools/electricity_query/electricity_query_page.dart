@@ -46,7 +46,7 @@ class _ElectricityQueryPageState extends State<ElectricityQueryPage> {
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          if (c.inputController.text.isNotEmpty) {
+                          if (c.inputController.text.isNotEmpty && !c.querying.value) {
                             c.getElectricityData(c.inputController.text.trim());
                           }
                         },
@@ -75,7 +75,9 @@ class _ElectricityQueryPageState extends State<ElectricityQueryPage> {
                     if (!c.querying.value) {
                       return Table(
                         border: TableBorder.all(
-                            borderRadius: BorderRadius.circular(12)),
+                            borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).colorScheme.onSurface
+                        ),
                         columnWidths: {
                           0: FlexColumnWidth(),
                           1: FlexColumnWidth()
