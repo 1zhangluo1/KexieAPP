@@ -6,6 +6,7 @@ import 'package:kexie_app/global/global.dart';
 import 'package:kexie_app/routes/route.dart';
 import 'package:kexie_app/ui/sign_record/sign_record_controller.dart';
 import 'package:kexie_app/widgets/error_page.dart';
+import 'package:kexie_app/widgets/login_fail_page.dart';
 import '../../models/signRecords/signRecords.dart';
 
 class SignRecordPage extends StatefulWidget {
@@ -238,21 +239,7 @@ class _SignRecordPageState extends State<SignRecordPage> {
                       }
                     },
                   )
-                : Center(
-                    child: Text.rich(TextSpan(children: [
-                      const TextSpan(
-                          text: '此功能登录后方可使用，', style: TextStyle(fontSize: 20)),
-                      TextSpan(
-                          text: '请先登录',
-                          style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.blue,
-                              decoration: TextDecoration.underline,
-                              decorationColor: Colors.blue),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () => Get.toNamed(AppRoute.loginPage)),
-                    ])),
-                  )),
+                : LoginFailPage()),
       ),
     );
   }

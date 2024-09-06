@@ -10,8 +10,8 @@ class HintDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.zero
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20)
       ),
       child: Container(
         height: 200,
@@ -19,11 +19,14 @@ class HintDialog extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              color: Colors.red,
               height: 60,
               width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.red,
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(20))
+              ),
               child: const Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(12.0),
                 child: Align( alignment: Alignment.topLeft,child: Text('提示',style: TextStyle(color: Colors.white,fontSize: 25),)),
               ),
             ),

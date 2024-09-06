@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:kexie_app/global/global.dart';
 import 'package:kexie_app/ui/book_borrow_system/book_borrow_record/book_borrow_record_controller.dart';
 import 'package:kexie_app/widgets/error_page.dart';
+import 'package:kexie_app/widgets/login_fail_page.dart';
 
 class BookBorrowRecordPage extends StatefulWidget {
   const BookBorrowRecordPage({super.key});
@@ -21,7 +22,7 @@ class _BookBorrowRecordPageState extends State<BookBorrowRecordPage> {
       appBar: AppBar(
         title: const Text('借阅记录'),
       ),
-      body: SafeArea(
+      body: Global.isLogin.value ? SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
           child: FutureBuilder(
@@ -55,7 +56,7 @@ class _BookBorrowRecordPageState extends State<BookBorrowRecordPage> {
                 }
               }),
         ),
-      ),
+      ) : LoginFailPage()
     );
   }
 

@@ -10,9 +10,28 @@ class AboutAppPage extends StatefulWidget {
 class _AboutAppPageState extends State<AboutAppPage> {
   @override
   Widget build(BuildContext context) {
+
+    final titleStyle = TextStyle(
+      fontSize: 28,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.underline,
+      decorationColor: Theme.of(context).colorScheme.primary,
+      decorationStyle: TextDecorationStyle.solid
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text('关于应用'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: Text('应用简介',style: titleStyle,),
+            )
+          ],
+        ),
       ),
     );
   }

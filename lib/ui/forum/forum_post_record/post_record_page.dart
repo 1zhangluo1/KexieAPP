@@ -69,7 +69,7 @@ class _PostRecordPageState extends State<PostRecordPage> {
     required int index
   }) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       child: Slidable(
         key: ValueKey(post.iD),
         direction: Axis.horizontal,
@@ -113,7 +113,7 @@ class _PostRecordPageState extends State<PostRecordPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
+                        padding: const EdgeInsets.fromLTRB(16, 10, 0, 10),
                         child: Text(
                           datetimeFormat
                               .format(DateTime.parse(post.createdAt).toLocal()),
@@ -121,7 +121,7 @@ class _PostRecordPageState extends State<PostRecordPage> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.only(left: 16),
                         child: SizedBox(
                           width: MediaQuery.of(context).size.width - 100,
                           child: Text(
@@ -134,7 +134,7 @@ class _PostRecordPageState extends State<PostRecordPage> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
+                          padding: const EdgeInsets.fromLTRB(16, 10, 0, 10),
                           child: Align(
                             alignment: Alignment.bottomLeft,
                             child: Row(

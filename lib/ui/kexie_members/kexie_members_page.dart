@@ -2,9 +2,11 @@ import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:kexie_app/global/global.dart';
 import 'package:kexie_app/ui/kexie_members/member_info_page.dart';
 import 'package:kexie_app/ui/kexie_members/kexie_members_controller.dart';
 import 'package:kexie_app/widgets/error_page.dart';
+import 'package:kexie_app/widgets/login_fail_page.dart';
 
 class KexieMembersPage extends StatefulWidget {
   const KexieMembersPage({super.key});
@@ -43,7 +45,7 @@ class _KexieMembersPageState extends State<KexieMembersPage> {
         ),
         body: Padding(
           padding: const EdgeInsets.all(10),
-          child: SafeArea(
+          child: Global.isLogin.value ? SafeArea(
             child: FutureBuilder(
               future: c.members,
               builder: (context, snapshot) {
@@ -74,7 +76,7 @@ class _KexieMembersPageState extends State<KexieMembersPage> {
                 }
               },
             ),
-          ),
+          ) : LoginFailPage()
         ));
   }
 
