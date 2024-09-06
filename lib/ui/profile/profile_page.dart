@@ -367,6 +367,25 @@ class Profile extends StatelessWidget {
                   ),
                 ),
                 ListTile(
+                  onTap: () => Get.toNamed(AppRoute.toolsMenu),
+                  title: Text(
+                    '便捷工具',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      fontSize: 20,
+                    ),
+                  ),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 26,
+                  ),
+                  leading: const Icon(
+                    Icons.hardware_outlined,
+                    color: Colors.pinkAccent,
+                    size: 26,
+                  ),
+                ),
+                ListTile(
                   onTap: () => Get.toNamed(AppRoute.aboutApp),
                   title: Text(
                     '关于应用',

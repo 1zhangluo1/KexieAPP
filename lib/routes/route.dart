@@ -14,6 +14,8 @@ import 'package:kexie_app/ui/school_map/school_map.dart';
 import 'package:kexie_app/ui/sign_rank/sign_rank_page.dart';
 import 'package:kexie_app/ui/sign_record/sign_record_page.dart';
 import 'package:kexie_app/ui/sign_system/sign_page.dart';
+import 'package:kexie_app/ui/tools/electricity_query/electricity_query_page.dart';
+import 'package:kexie_app/ui/tools/tools_menu_page.dart';
 
 import '../ui/book_borrow_system/book_borrow_record/book_borrow_record_page.dart';
 import '../widgets/main_struct/main_struct_page.dart';
@@ -38,6 +40,8 @@ class AppRoute {
   static const String detailPost = '/detail_post';
   static const String sendPostPage = '/send_post';
   static const String postRecord = '/post_record';
+  static const String toolsMenu = '/tools_menu';
+  static const String electricityQuery = '/electricity_query';
 
   static List<GetPage> routes = [
     GetPage(
@@ -95,6 +99,14 @@ class AppRoute {
     GetPage(
         name: postRecord,
         page: () => PostRecordPage(),
+        transition: Transition.cupertino),
+    GetPage(
+        name: toolsMenu,
+        page: () => ToolsMenuPage(),
+        transition: Transition.cupertino),
+    GetPage(
+        name: electricityQuery,
+        page: () => ElectricityQueryPage(),
         transition: Transition.cupertino),
     GetPage(
         name: aboutApp,
