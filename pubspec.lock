@@ -736,6 +736,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.8.0"
+  kt_dart:
+    dependency: "direct main"
+    description:
+      name: kt_dart
+      sha256: "59d7ae2841ad2c176bbb5fa7596eb29ec75a418b119b446d17c954fb8d8dd4c8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -808,6 +816,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.6"
+  mobile_scanner:
+    dependency: "direct main"
+    description:
+      name: mobile_scanner
+      sha256: "82c9beb863705831a779e02e80398e61a86a48d1fcfdf4241ebd4292605acd9b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.2.2"
   octo_image:
     dependency: transitive
     description:
@@ -1341,6 +1357,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  vibration:
+    dependency: "direct main"
+    description:
+      name: vibration
+      sha256: "06588a845a4ebc73ab7ff7da555c2b3dbcd9676164b5856a38bf0b2287f1045d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.9.0"
+  vibration_platform_interface:
+    dependency: transitive
+    description:
+      name: vibration_platform_interface
+      sha256: "735a5fef0f284de0ad9449a5ed7d36ba017c6f59b5b20ac64418af4a6bd35ee7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   vm_service:
     dependency: transitive
     description:
@@ -1446,5 +1478,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.3.0 <4.0.0"
-  flutter: ">=3.19.0"
+  dart: ">=3.4.0 <4.0.0"
+  flutter: ">=3.22.0"

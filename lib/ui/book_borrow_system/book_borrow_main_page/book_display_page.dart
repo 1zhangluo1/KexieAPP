@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kexie_app/models/book_infomation/book_infomation.dart';
 import 'package:kexie_app/ui/book_borrow_system/detail_book/detail_book_page.dart';
+import 'package:kexie_app/widgets/loading_view.dart';
 import 'package:kexie_app/widgets/login_fail_page.dart';
+import 'package:kexie_app/widgets/toast.dart';
 import '../../../global/global.dart';
 import 'book_display_controller.dart';
 
@@ -52,6 +54,21 @@ class _BookBorrowPageState extends State<BookBorrowPage> {
                   ),
                 ),
               ],
+            ),
+            floatingActionButton: FloatingActionButton(
+              shape: CircleBorder(),
+
+              onPressed: () async {
+                String result = await c.scanBookQrCode();
+                if (result.isNotEmpty) {
+                  LoadingView.show(context, text: '添加中...');
+                  await c.addBooks(result);
+                  LoadingView.hide(context);
+                } else {
+                  toastFailure(message: '扫码错误');
+                }
+              },
+              child: Icon(Icons.add),
             ),
             body: Padding(
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),

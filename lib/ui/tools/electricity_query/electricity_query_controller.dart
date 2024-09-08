@@ -25,6 +25,7 @@ class ElectricityQueryController extends GetxController {
   final querying = false.obs;
   RxList<ElectricityData> electricityData = <ElectricityData>[].obs;
 
+
   Future<void> getElectricityData(String room) async {
     final queryParam = {
       'roomno': room,

@@ -1,9 +1,12 @@
+import 'package:dio/dio.dart' as dios;
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:kexie_app/Internet/network.dart';
 import 'package:kexie_app/models/book_infomation/book_infomation.dart';
 import 'package:kexie_app/widgets/toast.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+import '../../../widgets/scan.dart';
 
 class BookBorrowController extends GetxController{
 
@@ -21,13 +24,34 @@ class BookBorrowController extends GetxController{
         for (int i=0;i<100;i++) {
           bookInformation.value.data.addAll(originalData);
         }
-        // bookInformation.value.data.forEach((aaa) => print(aaa.name));
-        // bookInformation.value.data.forEach((aaa) => aaa.name = 'swift编程实战-uml解析案例实战二十啊啊啊飒飒泡果的屁股');
       } else {
         toastFailure(message: response.data['msg']);
       }
     } on Exception catch (e) {
       toastFailure(message: '获取书籍信息失败',error: e.toString());
+    }
+  }
+
+  Future<String> scanBookQrCode() async {
+    BarcodeCapture result = await Get.to(Scan());
+    String isbn = result.barcodes.first.rawValue.toString();
+    return isbn;
+  }
+
+  Future addBooks(String isbn) async {
+    try {
+      final dio = AppNetwork.get().appDio;
+      dios.FormData formData = dios.FormData.fromMap({
+        'isbn': isbn
+      });
+      final response = await dio.post('/book/add_books',data: formData);
+      if (response.data['code'] == 200) {
+        toastSuccess(message: '添加成功');
+      } else {
+        toastFailure(message: response.data['msg']);
+      }
+    } on Exception catch (e) {
+      toastFailure(message: '添加书籍失败',error: e.toString());
     }
   }
 
